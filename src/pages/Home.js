@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import {Container, Column} from '../components/grid';
 import {Header} from '../components/header';
+import Button from '../components/button';
+import Box from '../components/box';
+import {map} from 'lodash';
 
 const Welcome = styled.div`
   height: calc(75vh - 64px);
@@ -36,13 +39,32 @@ const Home = props => {
     });
   }
 
+  const topMenu = [
+    {
+      id: 'update',
+      children: 'Atualizar',
+      onClick: handleClick,
+      hasIcon: true
+    },
+    {
+      id: 'error',
+      children: 'Mostrar erro',
+      onClick: mostrarErro,
+      hasIcon: true
+    },
+  ]
+
   return (
     <React.Fragment>
 
       <Header title="Ekki">
-        seção 1
-        <button onClick={handleClick}>atualizar</button>
-        <button onClick={mostrarErro}>mostrar erro</button>
+        <Box flexDirection='column'>
+          {map(topMenu, item => (
+            <Box key={item.id} marginTop={1} marginBottom={1}>
+              <Button {...item} />
+            </Box>
+          ))}
+        </Box>
       </Header>
 
       <Container size="50vw 50vw">
