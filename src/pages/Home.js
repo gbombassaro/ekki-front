@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-import {Container, Column} from '../components/grid'
-import {Header} from '../components/header'
+import React from 'react';
+import styled from 'styled-components';
+import {Container, Column} from '../components/grid';
+import {Header} from '../components/header';
 
 const Welcome = styled.div`
   height: calc(75vh - 64px);
@@ -23,11 +23,26 @@ const Credit = styled.div`
 `
 
 const Home = props => {
+
+  const handleClick = () => {
+    props.getUsers();
+  }
+
+  const mostrarErro = () => {
+    props.dispatch({
+      type: 'notification',
+      show: true,
+      message: 'Ocorreu um erro ao carregar os dados.'
+    });
+  }
+
   return (
     <React.Fragment>
 
       <Header title="Ekki">
         seção 1
+        <button onClick={handleClick}>atualizar</button>
+        <button onClick={mostrarErro}>mostrar erro</button>
       </Header>
 
       <Container size="50vw 50vw">
