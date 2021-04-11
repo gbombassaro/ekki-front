@@ -60,7 +60,7 @@ const Home = props => {
       <Header title="Ekki">
         <Box flexDirection='column'>
           {map(topMenu, item => (
-            <Box key={item.id} marginTop={1} marginBottom={1}>
+            <Box key={item.id} marginTop={1} marginBottom={1} justifyContent='flex-end'>
               <Button {...item} />
             </Box>
           ))}
