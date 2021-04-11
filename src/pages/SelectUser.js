@@ -1,10 +1,16 @@
 import React from 'react';
 import Section from '../components/section';
 import User from '../components/user';
+import {Link} from 'react-router-dom'
 import {map} from 'lodash';
 
 const SelectUser = props => {
-  const {data} = props;
+  const {usersList} = props;
+
+  const dispatchSelectedUser = id => {
+    props.dispatch({type: 'auth', userData: usersList[id]})
+  }
+
   return (
     <Section 
       width='calc(100vw - 48px)'
@@ -15,8 +21,11 @@ const SelectUser = props => {
       justifyContent={['flex-start', 'center']}
       color='secondary'
     >
-      {/* Todo: revisar segurança de passar o account id para o key */}
-      {map(data, user => <User key={data.id} data={user} /> )}
+      {map(usersList, (user, key) => (
+        <Link to='/home' key={user._id}>
+          <User altId={key} data={user} onClick={dispatchSelectedUser} /> 
+        </Link>
+      ))}
     </Section>
   )
 }

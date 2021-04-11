@@ -7,11 +7,20 @@ import {get} from 'lodash';
 const Container = styled(Box)`
   &:hover {
     cursor: pointer;
+    box-shadow: 0 0 0 1px black;
+  }
+  &:active {
+    box-shadow: unset;
   }
 `
 
 const User = props => {
   const data = get(props, 'data');
+
+  const handleClick = () => {
+    props.onClick(props.altId);
+  };
+
   return (
     <Container
       width={['calc(100% - 48px)', '400px', '600px']}
@@ -24,6 +33,7 @@ const User = props => {
       marginBottom={1}
       border='1px solid'
       borderColor='secondary'
+      onClick={handleClick}
     >
       <p>{data.name}</p>
       <Box alignItems='center'>

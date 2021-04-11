@@ -4,7 +4,7 @@ export const globalStateReducer = (state, action) => {
     case 'update':
       return {
         ...state,
-        data: data.data
+        usersList: data.data
       }
     case 'notification':
       return {
@@ -12,6 +12,14 @@ export const globalStateReducer = (state, action) => {
         notification: {
           show: action.show,
           message: action.message,
+        }
+      }
+    case 'auth':
+      return {
+        ...state,
+        data: action.userData,
+        authenticatedUser: {
+          id: action.userData._id
         }
       }
     default:

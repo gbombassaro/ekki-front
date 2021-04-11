@@ -9,10 +9,12 @@ const StateProvider = ({children}) => {
 
   const initialState = {
     data: {},
+    authenticatedUser: {},
+    usersList: [],
     notification: {
       show: false,
       message: '',
-    }
+    },
   }
 
   const [state, dispatch] = useReducer(globalStateReducer, initialState);
