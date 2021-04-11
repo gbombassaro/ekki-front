@@ -4,14 +4,27 @@ import Home from './pages/Home'
 import Beneficiaries from './pages/Beneficiaries'
 import NewTransaction from './pages/NewTransaction'
 import TransactionHistory from './pages/TransactionHistory'
+import {UserContext} from './provider'
 
-const App = props => {
+const App = () => {
+
+  const RouteWithContext = ({path, exact = false, component}) => {
+    const Component = component;
+    return (
+      <Route exact={exact} path={path}>
+        <UserContext.Consumer>
+          {props => <Component {...props} />}
+        </UserContext.Consumer>
+      </Route>
+    )
+  }
+
   return (
     <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/favorecidos" component={Beneficiaries} />
-      <Route path="/transferir" component={NewTransaction} />
-      <Route path="/historico-de-transacoes" component={TransactionHistory} />
+      <RouteWithContext exact path="/" component={Home} />
+      <RouteWithContext path="/favorecidos" component={Beneficiaries} />
+      <RouteWithContext path="/transferir" component={NewTransaction} />
+      <RouteWithContext path="/historico-de-transacoes" component={TransactionHistory} />
       <Route path="*">
         <pre>error</pre>
       </Route>
