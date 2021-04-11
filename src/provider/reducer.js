@@ -1,4 +1,4 @@
-export default (state, action) => {
+export const globalStateReducer = (state, action) => {
   const {type, data} = action;
   switch(type) {
     case 'update':
