@@ -1,5 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import Box from '../box';
+import Button from '../button';
+import {map} from 'lodash';
+import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom'
 
 const Section = styled.section`
   display: flex;
@@ -16,11 +21,26 @@ const Section = styled.section`
   }
 `
 
-export const Header = ({children, title}) => {
+const Header = ({actionButtons, title}) => {
   return (
     <Section height='25vh'>
       <h1>{title}</h1>
-      {children}
+      <Box flexDirection='column'>
+        {map(actionButtons, button => (
+          <Box key={button.id} marginTop={1} marginBottom={1} justifyContent='flex-end'>
+            <Link to={button.link}>
+              <Button {...button} />
+            </Link>
+          </Box>
+        ))}
+      </Box>
     </Section>
   )
 }
+
+Header.propTypes = {
+  actionButtons: PropTypes.array,
+  title: PropTypes.string,
+}
+
+export default Header;
