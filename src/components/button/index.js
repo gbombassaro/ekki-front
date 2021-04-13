@@ -26,6 +26,10 @@ const Button = styled.button`
   &:active {
     box-shadow: unset;
   }
+  &:disabled {
+    box-shadow: unset;
+    border-color: rgba(16, 16, 16, 0.3);
+  }
   .forward-icon {
     margin-left: 12px;
   }
