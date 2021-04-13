@@ -23,7 +23,7 @@ const SelectUser = props => {
     >
       {map(usersList, (user, key) => (
         <Link to='/home' key={user._id}>
-          <User altId={key} data={user} onClick={dispatchSelectedUser} /> 
+          <User altId={key} primaryInformation={user.name} secondaryInformation={user.balance} onClick={dispatchSelectedUser} /> 
         </Link>
       ))}
     </Section>

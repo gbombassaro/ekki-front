@@ -2,7 +2,6 @@ import React from 'react';
 import Box from '../box';
 import {ArrowForward} from '@material-ui/icons';
 import styled from 'styled-components';
-import {get} from 'lodash';
 
 const Container = styled(Box)`
   &:hover {
@@ -14,16 +13,15 @@ const Container = styled(Box)`
   }
 `
 
-const User = props => {
-  const data = get(props, 'data');
+const User = ({altId, primaryInformation, secondaryInformation, onClick}) => {
 
   const handleClick = () => {
-    props.onClick(props.altId);
+    onClick(altId);
   };
 
   return (
     <Container
-      width={['calc(100% - 48px)', '400px', '600px']}
+      width={['calc(100% - 48px)', '400px', '550px']}
       height={60}
       alignItems='center'
       justifyContent='space-between'
@@ -35,9 +33,9 @@ const User = props => {
       borderColor='secondary'
       onClick={handleClick}
     >
-      <p>{data.name}</p>
+      <p>{primaryInformation}</p>
       <Box alignItems='center'>
-        <p>{data.balance}</p>
+        {secondaryInformation && <p>{secondaryInformation}</p>}
         <ArrowForward/>
       </Box> 
     </Container>
