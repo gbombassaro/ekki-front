@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Header from '../../components/header';
 import Section from '../../components/section';
 import TransactionForm from '../../components/form';
 import UserForm from '../../components/userList';
+import Box from '../../components/box';
+import Balance from './balance';
 import {newTransaction} from './actions';
 
 const NewTransaction = props => {
@@ -11,13 +13,20 @@ const NewTransaction = props => {
 
   const [page, setPage] = useState(0);
   const [transactionDestiny, setTransactionDestiny] = useState({});
-  const [transactionValue, setTransactionValue] = useState('');
+  const [transactionValue, setTransactionValue] = useState();
+  const [validation, setValidation] = useState(false);
+
+  useEffect(() => {
+    if (!transactionValue) setValidation(false);
+    else setValidation(true);
+  }, [transactionValue]);
 
   const transactionFormData = [
     {
       id: 'value',
       value: transactionValue,
       onChange: setTransactionValue,
+      type: 'number',
     }
   ]
   const headerActionButtons = [
@@ -60,14 +69,18 @@ const NewTransaction = props => {
       }
       {page === 1 &&
         <Section justifyContent='center'>
-          <TransactionForm
-            data={transactionFormData}
-            primaryButtonAction={executeTransaction}
-            secondaryButtonAction={() => setPage(0)}
-            title='Qual o valor?'
-            primaryButtonText='Transferir'
-            secondaryButtonText='Voltar'
-          />
+          <Box width='100%' maxWidth={600} flexDirection='column'>
+            <Balance balance={data.balance} transactionValue={transactionValue} />
+            <TransactionForm
+              data={transactionFormData}
+              primaryButtonAction={executeTransaction}
+              secondaryButtonAction={() => setPage(0)}
+              title='Qual o valor?'
+              primaryButtonText='Transferir'
+              secondaryButtonText='Voltar'
+              disablePrimaryButton={!validation}
+            />
+          </Box>
         </Section>
       }
     </React.Fragment>
