@@ -25,6 +25,7 @@ const Input = props => {
 
   const {
     label,
+    maxLength,
     type,
     onChange,
     value,
@@ -40,6 +41,7 @@ const Input = props => {
       <StyledInput
         onChange={handleChange}
         type={type}
+        maxLength={maxLength}
         value={value}
       />
     </Box>
