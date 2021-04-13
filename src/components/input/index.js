@@ -1,5 +1,4 @@
 import React from 'react';
-import InputMask from 'react-input-mask';
 import styled from 'styled-components';
 import Box from '../box';
 
@@ -23,13 +22,26 @@ const Label = styled.label`
 `
 
 const Input = props => {
-  const {label} = props;
+
+  const {
+    label,
+    type,
+    onChange,
+    value,
+  } = props;
+
+  const handleChange = event => {
+    onChange(event.target.value);
+  }
+
   return (
     <Box flexDirection='column' marginTop={1} marginBottom={1} width='100%'>
       <Label>{label}</Label>
-      <InputMask {...props}>
-        {innerProps => <StyledInput {...innerProps} />}
-      </InputMask>
+      <StyledInput
+        onChange={handleChange}
+        type={type}
+        value={value}
+      />
     </Box>
   )
 }

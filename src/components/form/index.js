@@ -20,7 +20,7 @@ const Form = props => {
     <Box width='100%' flexDirection='column' maxWidth={600}>
       <h3>{title}</h3>
       <Box width='100%'>
-        {map(data, entry => <Input key={entry.id} {...entry} />)}
+        {map(data, entry => <Input key={entry.id} {...entry} value={entry.value} onChange={entry.onChange} />)}
       </Box>
       <Box width='100%' justifyContent='space-between' marginTop={3}>
         {secondaryButtonAction && <Button onClick={secondaryButtonAction}>{secondaryButtonText}</Button>}

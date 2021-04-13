@@ -1,16 +1,17 @@
 import React, {useState} from 'react';
-import Header from '../components/header';
-import Section from '../components/section';
-import TransactionForm from '../components/form';
-import UserForm from '../components/userList';
+import Header from '../../components/header';
+import Section from '../../components/section';
+import TransactionForm from '../../components/form';
+import UserForm from '../../components/userList';
+import {newTransaction} from './actions';
 
 const NewTransaction = props => {
-  const {data} = props;
+  const {data, dispatch, authenticatedUser} = props;
   const {beneficiaryList} = data;
 
   const [page, setPage] = useState(0);
-  const [transactionDestiny, setTransactionDestiny] = useState('');
-  const [transactionValue, setTransactionValue] = useState(0);
+  const [transactionDestiny, setTransactionDestiny] = useState({});
+  const [transactionValue, setTransactionValue] = useState('');
 
   const transactionFormData = [
     {
@@ -28,12 +29,19 @@ const NewTransaction = props => {
   ]
 
   const handleDestinySelection = data => {
-    setTransactionDestiny(data.id);
+    setTransactionDestiny(data);
     setPage(1);
   }
 
   const executeTransaction = () => {
-    console.log('execute');
+    newTransaction({ origin: authenticatedUser.id, destiny: transactionDestiny.id, value: transactionValue })
+    .then(() => {
+      dispatch({type: 'notification', show: true, message: 'Transação realizada com sucesso.'})
+    })
+    .catch(payload => {
+      const error = JSON.parse(payload.request.response);
+      dispatch({type: 'notification', show: true, message: error.message})
+    });
   }
 
   return (
