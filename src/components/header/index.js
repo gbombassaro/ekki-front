@@ -15,7 +15,7 @@ const Section = styled.section`
   height: calc(25vh - 64px);
   padding: 32px;
   h1 {
-    font-size: 120px;
+    font-size: 80px;
     margin-top: 0px;
     margin-bottom: 0px;
   }
