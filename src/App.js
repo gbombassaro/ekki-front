@@ -2,8 +2,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import {SelectUser, Home, Beneficiaries, NewTransaction, TransactionHistory} from './pages';
 import {UserContext} from './provider';
-import {ThemeProvider} from 'styled-components';
-import {theme} from './styles/theme';
+import UnauthorizedUser from './components/unauthorizedUser';
 
 const App = () => {
 
@@ -12,25 +11,26 @@ const App = () => {
     return (
       <Route exact={exact} path={path}>
         <UserContext.Consumer>
-          {props => <Component {...props} />}
+          {props => {
+            if (!props.authenticatedUser.id && path !== '/') return <UnauthorizedUser/>;
+            return <Component {...props} />;
+          }}
         </UserContext.Consumer>
       </Route>
     )
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Switch>
-        <RouteWithContext exact path="/" component={SelectUser} />
-        <RouteWithContext path="/home" component={Home} />
-        <RouteWithContext path="/favorecidos" component={Beneficiaries} />
-        <RouteWithContext path="/transferir" component={NewTransaction} />
-        <RouteWithContext path="/historico-de-transacoes" component={TransactionHistory} />
-        <Route path="*">
-          <pre>error</pre>
-        </Route>
-      </Switch>
-    </ThemeProvider>
+    <Switch>
+      <RouteWithContext exact path="/" component={SelectUser} />
+      <RouteWithContext path="/home" component={Home} />
+      <RouteWithContext path="/favorecidos" component={Beneficiaries} />
+      <RouteWithContext path="/transferir" component={NewTransaction} />
+      <RouteWithContext path="/historico-de-transacoes" component={TransactionHistory} />
+      <Route path="*">
+        <pre>error</pre>
+      </Route>
+    </Switch>
   );
 }
 

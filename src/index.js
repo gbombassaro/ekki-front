@@ -1,15 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {ThemeProvider} from 'styled-components';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import StateProvider from './provider';
+import {theme} from './styles/theme';
 import './index.css';
 
 ReactDOM.render( 
   <StateProvider>
     <BrowserRouter>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </BrowserRouter>
   </StateProvider>
   ,
