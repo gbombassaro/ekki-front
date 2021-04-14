@@ -16,7 +16,7 @@ const Panel = props => {
   const Welcome = () => (
     <Box
       width={boxWidth}
-      height='calc(80vh - 66px)'
+      height='calc(75vh - 66px)'
       padding={boxPadding}
       border='1px solid'
       borderColor='secondary'
@@ -32,7 +32,7 @@ const Panel = props => {
   const BalanceInformation = () => (
     <Box
       width={boxWidth}
-      height='calc(40vh - 66px)'
+      height='calc(37.5vh - 66px)'
       padding={boxPadding}
       border='1px solid'
       borderColor='secondary'
@@ -44,7 +44,7 @@ const Panel = props => {
   const CreditInformation = () => (
     <Box
       width={boxWidth}
-      height='calc(40vh - 66px)'
+      height='calc(37.5vh - 66px)'
       padding={boxPadding}
       border='1px solid'
       borderColor='secondary'

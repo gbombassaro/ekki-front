@@ -8,14 +8,16 @@ import Section from '../section';
 
 const Header = ({actionButtons, isHome, title}) => {
 
-  const containerHeightXs = isHome ? '100vh' : '20vh';
+  const containerHeightXs = isHome ? 'calc(100vh - 64px)' : 'max-content';
+  const containerHeightMd = isHome ? 'calc(25vh - 64px)' : 'max-content';
 
   return (
     <Section
-      height={[containerHeightXs, '20vh']}
+      height={[containerHeightXs, containerHeightMd]}
       flexDirection={['column', 'row']}
       alignItems={['flex-start', 'center']}
       justifyContent='space-between'
+      padding='32px'
     >
       <Box height='max-content'>
         <h1>{title}</h1>
