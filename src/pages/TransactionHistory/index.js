@@ -23,7 +23,7 @@ const TransactionHistory = props => {
       <Header title='Histórico de transações' actionButtons={headerActionButtons} />
       <Section justifyContent='center'>
         <Box width='100%' maxWidth={600} flexDirection='column'>
-          {map(transactionHistory, transaction => <Transaction key={transaction.id} data={transaction} /> )}
+          {map(transactionHistory.reverse(), transaction => <Transaction key={transaction.id} data={transaction} /> )}
         </Box>
       </Section>
     </React.Fragment>
