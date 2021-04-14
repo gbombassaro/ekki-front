@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {ThemeProvider} from 'styled-components';
+import {ThemeProvider, StyleSheetManager} from 'styled-components';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
@@ -12,7 +12,9 @@ ReactDOM.render(
   <StateProvider>
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <App />
+        <StyleSheetManager disableVendorPrefixes={true}>
+          <App />
+        </StyleSheetManager>
       </ThemeProvider>
     </BrowserRouter>
   </StateProvider>
