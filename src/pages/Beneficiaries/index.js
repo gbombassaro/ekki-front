@@ -60,7 +60,7 @@ const NewBeneficiary = props => {
   return (
     <React.Fragment>
       <Header title='Novo favorecido' actionButtons={headerActionButtons} />
-      <Section justifyContent='center'>
+      <Section padding='32px' justifyContent='center'>
         <BeneficiaryForm
           title='Insira os dados do favorecido'
           data={beneficiaryFormData}

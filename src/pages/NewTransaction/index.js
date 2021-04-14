@@ -57,7 +57,7 @@ const NewTransaction = props => {
     <React.Fragment>
       <Header title='Transferir' actionButtons={headerActionButtons} />
       {page === 0 &&
-        <Section justifyContent='center'>
+        <Section padding='32px' justifyContent={['flex-start', 'center']}>
           <UserForm
             data={beneficiaryList}
             onClick={handleDestinySelection}
