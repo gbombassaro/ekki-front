@@ -68,7 +68,7 @@ const NewTransaction = props => {
         </Section>
       }
       {page === 1 &&
-        <Section justifyContent='center'>
+        <Section padding='32px' justifyContent='center'>
           <Box width='100%' maxWidth={600} flexDirection='column'>
             <Balance balance={data.balance} transactionValue={transactionValue} />
             <TransactionForm
