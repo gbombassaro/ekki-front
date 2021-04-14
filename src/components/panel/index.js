@@ -1,43 +1,69 @@
 import React from 'react'
-import styled from 'styled-components'
-import {Container, Column} from '../grid'
-
-const Welcome = styled.div`
-  height: calc(75vh - 64px);
-  padding: 32px;
-  border-width: 1px;
-  border-style: solid;
-`
-const Account = styled.div`
-  height: calc(37.5vh - 64px);
-  padding: 32px;
-  border-width: 1px;
-  border-style: solid;
-`
-const Credit = styled.div`
-  height: calc(37.5vh - 64px);
-  padding: 32px;
-  border-width: 1px;
-  border-style: solid;
-`
+import {Grid, Item} from '../grid'
+import Box from '../box'
+import {parseName, parseBalance} from '../../utils'
+import Button from '../button';
+import {Link} from 'react-router-dom';
 
 const Panel = props => {
+
+  const {data} = props;
+  const {name, balance, credit, creditLimit} = data;
+
+  const boxWidth = ['calc(100% - 50px)', 'calc(100% - 66px)'];
+  const boxPadding = ['24px', '32px']
+
+  const Welcome = () => (
+    <Box
+      width={boxWidth}
+      height='calc(80vh - 66px)'
+      padding={boxPadding}
+      border='1px solid'
+      borderColor='secondary'
+      flexDirection='column'
+    >
+      <p>Seja bem vindo, {parseName(name)}</p>
+      <Link to='/'>
+        <Button>Voltar</Button>
+      </Link>
+    </Box>
+  )
+
+  const BalanceInformation = () => (
+    <Box
+      width={boxWidth}
+      height='calc(40vh - 66px)'
+      padding={boxPadding}
+      border='1px solid'
+      borderColor='secondary'
+    >
+      {parseBalance(balance)}
+    </Box>
+  )
+
+  const CreditInformation = () => (
+    <Box
+      width={boxWidth}
+      height='calc(40vh - 66px)'
+      padding={boxPadding}
+      border='1px solid'
+      borderColor='secondary'
+    >
+      Seu limite é de {parseBalance(creditLimit)}
+      você utilizou {parseBalance(credit)}
+    </Box>
+  )
+
   return (
-    <Container size="50vw 50vw">
-      <Column>
-        <Welcome>
-          welcome
-        </Welcome>
-      </Column>
-      <Column>
-        <Account>
-          Conta
-        </Account>
-        <Credit>
-          teste
-        </Credit>
-      </Column>
-    </Container>
+    <Grid gridTemplateColumns={['100vw', '50vw 50vw']}>
+      <Item>
+        <Welcome/>
+      </Item>
+      <Item>
+        <BalanceInformation/>
+        <CreditInformation/>
+      </Item>
+    </Grid>
   )
 }
 

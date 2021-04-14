@@ -1,31 +1,26 @@
 import React from 'react';
-import styled from 'styled-components';
 import Box from '../box';
 import Button from '../button';
 import {map} from 'lodash';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import Section from '../section';
 
-const Section = styled.section`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: calc(100% - 64px);
-  height: calc(25vh - 64px);
-  padding: 32px;
-  h1 {
-    font-size: 80px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-`
+const Header = ({actionButtons, isHome, title}) => {
 
-const Header = ({actionButtons, title}) => {
+  const containerHeightXs = isHome ? '100vh' : '20vh';
+
   return (
-    <Section height='25vh'>
-      <h1>{title}</h1>
-      <Box flexDirection='column'>
+    <Section
+      height={[containerHeightXs, '20vh']}
+      flexDirection={['column', 'row']}
+      alignItems={['flex-start', 'center']}
+      justifyContent='space-between'
+    >
+      <Box height='max-content'>
+        <h1>{title}</h1>
+      </Box>
+      <Box flexDirection='column' alignItems={['flex-start', 'flex-end']}>
         {map(actionButtons, button => (
           <Box key={button.id} marginTop={1} marginBottom={1} justifyContent='flex-end'>
             <Link to={button.link}>
