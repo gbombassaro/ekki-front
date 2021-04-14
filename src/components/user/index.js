@@ -1,6 +1,6 @@
 import React from 'react';
 import Box from '../box';
-import {ArrowForward} from '@material-ui/icons';
+import arrowForwardIcon from '../../assets/arrow-forward.svg';
 import styled from 'styled-components';
 
 const Container = styled(Box)`
@@ -36,7 +36,7 @@ const User = ({altId, primaryInformation, secondaryInformation, onClick}) => {
       <p>{primaryInformation}</p>
       <Box alignItems='center'>
         {secondaryInformation && <p>{secondaryInformation}</p>}
-        <ArrowForward/>
+        <img src={arrowForwardIcon} />
       </Box> 
     </Container>
   )

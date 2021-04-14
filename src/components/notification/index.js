@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {debounce} from 'lodash';
-import {Close} from '@material-ui/icons'
+import closeIcon from '../../assets/close.svg'
 
 const Body = styled.div`
   position: absolute;
@@ -37,7 +37,7 @@ const Notification = ({data, dispatch}) => {
 
   return (
     <Body>
-      <Close onClick={close} />
+      <img src={close} onClick={close} />
       <Message>{message}</Message>
     </Body>
   )

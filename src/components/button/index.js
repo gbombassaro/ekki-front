@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {ArrowForward} from '@material-ui/icons';
+import arrowForwardIcon from '../../assets/arrow-forward.svg';
 import PropTypes from 'prop-types';
 
 const Button = styled.button`
@@ -38,7 +38,7 @@ const Component = props => {
   return (
     <Button {...props}>
       {props.children}
-      {props.hasIcon && <ArrowForward className='forward-icon'/>}
+      {props.hasIcon && <img src={arrowForwardIcon} className='forward-icon'/>}
     </Button>
   )
 }
