@@ -38,7 +38,7 @@ const NewTransaction = props => {
   ]
 
   const handleDestinySelection = data => {
-    setTransactionDestiny(data);
+    setTransactionDestiny(data.entry);
     setPage(1);
   }
 
