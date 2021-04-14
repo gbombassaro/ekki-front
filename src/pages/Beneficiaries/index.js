@@ -49,12 +49,18 @@ const NewBeneficiary = props => {
   ]
 
   const handleClick = () => {
-    newUser({name, cpf, phone, creditLimit: 500})
-      .then(response => newBeneficiary({originId: authenticatedUser, beneficiaryId: response._id}))
-      .catch(payload => {
-        const error = JSON.parse(payload.request.response);
-        dispatch({type: 'notification', show: true, message: error.message})
-      })
+    newUser({
+      name,
+      cpf,
+      phone,
+    })
+    .then(response => {
+      newBeneficiary({originId: authenticatedUser, beneficiaryId: response._id})
+    })
+    .catch(payload => {
+      const error = JSON.parse(payload.request.response);
+      dispatch({type: 'notification', show: true, message: error.message})
+    })
   }
 
   return (

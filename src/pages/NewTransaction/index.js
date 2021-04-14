@@ -43,7 +43,11 @@ const NewTransaction = props => {
   }
 
   const executeTransaction = () => {
-    newTransaction({ origin: authenticatedUser.id, destiny: transactionDestiny.id, value: transactionValue })
+    newTransaction({ 
+      origin: authenticatedUser.id,
+      destiny: transactionDestiny.id,
+      value: transactionValue
+    })
     .then(() => {
       dispatch({type: 'notification', show: true, message: 'Transação realizada com sucesso.'})
     })
@@ -70,7 +74,10 @@ const NewTransaction = props => {
       {page === 1 &&
         <Section padding='32px' justifyContent='center'>
           <Box width='100%' maxWidth={600} flexDirection='column'>
-            <Balance balance={data.balance} transactionValue={transactionValue} />
+            <Balance
+              balance={data.balance}
+              transactionValue={transactionValue}
+            />
             <TransactionForm
               data={transactionFormData}
               primaryButtonAction={executeTransaction}
