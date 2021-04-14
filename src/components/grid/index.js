@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import {grid} from 'styled-system';
 
-export const Container = styled.div`
+export const Grid = styled.div`
+  width: 100%;
   display: grid;
-  grid-template-columns: ${props => props.size};
-  height: 75vh;
+  ${grid};
 `
-export const Column = styled.div`
+export const Item = styled.div`
   width: 100%;
   height: max-content;
 `

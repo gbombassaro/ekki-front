@@ -4,23 +4,11 @@ import Panel from '../components/panel';
 
 const Home = props => {
 
-  // const handleClick = () => {
-  //   props.getUsers();
-  // }
-
-  // const mostrarErro = () => {
-  //   props.dispatch({
-  //     type: 'notification',
-  //     show: true,
-  //     message: 'Ocorreu um erro ao carregar os dados.'
-  //   });
-  // }
-
   const actionButtons = [
     {
-      id: 'beneficiaries',
-      children: 'Favorecidos',
-      link: '/favorecidos',
+      id: 'newtransaction',
+      children: 'Transferir',
+      link: '/transferir',
       hasIcon: true
     },
     {
@@ -30,17 +18,17 @@ const Home = props => {
       hasIcon: true
     },
     {
-      id: 'newtransaction',
-      children: 'Transferir',
-      link: '/transferir',
+      id: 'beneficiaries',
+      children: 'Cadastrar novo favorecido',
+      link: '/favorecidos',
       hasIcon: true
     },
   ]
 
   return (
     <React.Fragment>
-      <Header title="Ekki" actionButtons={actionButtons} />
-      <Panel />
+      <Header title="Ekki" actionButtons={actionButtons} isHome/>
+      <Panel {...props} />
     </React.Fragment>
   )
 }

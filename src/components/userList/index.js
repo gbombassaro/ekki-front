@@ -23,7 +23,7 @@ const UserList = props => {
             key={entry._id}
             primaryInformation={entry[primaryInformation]}
             secondaryInformation={entry[secondaryInformation]}
-            onClick={() => onClick(entry)}
+            onClick={altId => onClick({entry, altId})}
           />
         ))}
       </Box>
