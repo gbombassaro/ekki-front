@@ -6,6 +6,7 @@ import UserForm from '../../components/userList';
 import Box from '../../components/box';
 import Balance from './balance';
 import {newTransaction} from './actions';
+import {toNumber} from '../../utils'
 
 const NewTransaction = props => {
   const {data, dispatch, authenticatedUser} = props;
@@ -49,11 +50,11 @@ const NewTransaction = props => {
       value: transactionValue
     })
     .then(() => {
-      dispatch({type: 'notification', show: true, message: 'Transação realizada com sucesso.'})
+      dispatch({type: 'notification', show: true, message: 'Transação realizada com sucesso.'});
     })
     .catch(payload => {
       const error = JSON.parse(payload.request.response);
-      dispatch({type: 'notification', show: true, message: error.message})
+      dispatch({type: 'notification', show: true, message: error.message});
     });
   }
 

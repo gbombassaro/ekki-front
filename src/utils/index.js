@@ -10,3 +10,7 @@ export const parseName = name => {
 export const parseBalance = value => {
   return `R$ ${numberFormat(value)}`
 }
+
+export const toNumber = value => {
+  return parseInt(value);
+}
