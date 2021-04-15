@@ -23,13 +23,7 @@ const Label = styled.label`
 
 const Input = props => {
 
-  const {
-    label,
-    maxLength,
-    type,
-    onChange,
-    value,
-  } = props;
+  const {onChange, label} = props;
 
   const handleChange = event => {
     onChange(event.target.value);
@@ -38,12 +32,7 @@ const Input = props => {
   return (
     <Box flexDirection='column' marginTop={1} marginBottom={1} width='100%'>
       <Label>{label}</Label>
-      <StyledInput
-        onChange={handleChange}
-        type={type}
-        maxLength={maxLength}
-        value={value}
-      />
+      <StyledInput {...props} onChange={handleChange} />
     </Box>
   )
 }

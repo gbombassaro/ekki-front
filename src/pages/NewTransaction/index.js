@@ -7,10 +7,8 @@ import Box from '../../components/box';
 import Balance from './balance';
 import {newTransaction} from './actions';
 
-const NewTransaction = props => {
-  const {userData, dispatch} = props;
+const NewTransaction = ({userData, dispatch}) => {
   const {_id, balance, beneficiaryList} = userData;
-
   const [page, setPage] = useState(0);
   const [transactionDestiny, setTransactionDestiny] = useState({});
   const [transactionValue, setTransactionValue] = useState(0);
