@@ -1,5 +1,5 @@
 import React, {createContext, useReducer, useEffect} from 'react';
-import {getUsers} from './actions';
+import {loadData, updateData} from './actions';
 import {globalStateReducer} from './reducer';
 import Notification from '../components/notification';
 
@@ -8,24 +8,21 @@ export const UserContext = createContext();
 const StateProvider = ({children}) => {
 
   const initialState = {
-    data: {},
-    authenticatedUser: {},
+    userData: {},
     usersList: [],
     notification: {
       show: false,
       message: '',
     },
-  }
+  };
 
   const [state, dispatch] = useReducer(globalStateReducer, initialState);
+  const providerState = {...state, dispatch, updateData};
 
-  useEffect(() => getUsers(dispatch), []);
-
-  const providerState = {
-    ...state,
-    dispatch,
-    getUsers
-  }
+  useEffect(() => {
+    loadData(dispatch);
+    return () => localStorage.removeItem('authenticatedUser');
+  }, []);
   
   return (
     <UserContext.Provider value={providerState}>

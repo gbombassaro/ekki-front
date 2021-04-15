@@ -23,21 +23,18 @@ const Message = styled.p`
 
 const Notification = ({data, dispatch}) => {
   const {show, message} = data;
-
-  const close = () => dispatch({
-    type: 'notification',
-    show: false,
-    message: ''
-  });  
-
   if (!show) return null;
+
+  const close = () => {
+    dispatch({type: 'NOTIFICATION/CLOSE'});
+  }
 
   const autoCloseNotification = debounce(close, 4000);
   autoCloseNotification();
 
   return (
     <Body>
-      <img src={close} onClick={close} />
+      <img src={closeIcon} onClick={close} />
       <Message>{message}</Message>
     </Body>
   )

@@ -6,7 +6,7 @@ import {newUser, newBeneficiary} from './actions';
 
 const NewBeneficiary = props => {
 
-  const {authenticatedUser, dispatch} = props;
+  const {userData, dispatch} = props;
   const [name, setName] = useState();
   const [cpf, setCpf] = useState();
   const [phone, setPhone] = useState();
@@ -14,8 +14,8 @@ const NewBeneficiary = props => {
 
   useEffect(() => {
     if (!name || !cpf || !phone) setValidation(false);
-    else setValidation(true)
-  }, [name, cpf, phone])
+    else setValidation(true);
+  }, [name, cpf, phone]);
 
   const headerActionButtons = [
     {
@@ -52,14 +52,14 @@ const NewBeneficiary = props => {
     newUser({
       name,
       cpf,
-      phone,
+      phone
     })
     .then(response => {
-      newBeneficiary({originId: authenticatedUser, beneficiaryId: response._id})
+      newBeneficiary({originId: userData._id, beneficiaryId: response._id})
     })
     .catch(payload => {
       const error = JSON.parse(payload.request.response);
-      dispatch({type: 'notification', show: true, message: error.message})
+      dispatch({type: 'NOTIFICATION/SHOW', message: error.message});
     })
   }
 
@@ -68,8 +68,8 @@ const NewBeneficiary = props => {
       <Header title='Novo favorecido' actionButtons={headerActionButtons} />
       <Section padding='32px' justifyContent='center'>
         <BeneficiaryForm
-          title='Insira os dados do favorecido'
           data={beneficiaryFormData}
+          title='Insira os dados do favorecido'
           primaryButtonText='Cadastrar'
           primaryButtonAction={handleClick}
           disablePrimaryButton={!validation}

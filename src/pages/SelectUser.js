@@ -5,12 +5,13 @@ import {Link} from 'react-router-dom'
 import {map} from 'lodash';
 import {parseBalance} from '../utils'
 
-const SelectUser = props => {
-  const {usersList} = props;
+const SelectUser = ({dispatch, usersList}) => {
 
   const dispatchSelectedUser = id => {
-    props.dispatch({type: 'auth', userData: usersList[id]})
-  }
+    const selectedUser = usersList[id];
+    dispatch({type: 'USER/SET_AUTH_USER', data: selectedUser});
+    localStorage.setItem('authenticatedUser', selectedUser._id);
+  };
 
   return (
     <Section 
@@ -23,7 +24,12 @@ const SelectUser = props => {
     >
       {map(usersList, (user, key) => (
         <Link to='/home' key={user._id}>
-          <User altId={key} primaryInformation={user.name} secondaryInformation={parseBalance(user.balance)} onClick={dispatchSelectedUser} /> 
+          <User
+            altId={key}
+            primaryInformation={user.name}
+            secondaryInformation={parseBalance(user.balance)}
+            onClick={dispatchSelectedUser}
+          />
         </Link>
       ))}
     </Section>

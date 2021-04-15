@@ -1,31 +1,40 @@
-export const globalStateReducer = (state, action) => {
-  const {type, data} = action;
-  switch(type) {
-    case 'update':
+export const globalStateReducer = (state, action) => { 
+  switch(action.type) {
+    case 'DATA/LOAD':
       return {
         ...state,
-        usersList: data.data
+        usersList: action.payload
       }
-    case 'notification':
+    case 'DATA/UPDATE':
+      return {
+        ...state,
+        userData: action.payload
+      }
+    case 'NOTIFICATION/SHOW':
       return {
         ...state,
         notification: {
-          show: action.show,
+          show: true,
           message: action.message,
         }
       }
-    case 'auth':
+    case 'NOTIFICATION/CLOSE':
       return {
         ...state,
-        data: action.userData,
-        authenticatedUser: {
-          id: action.userData._id
+        notification: {
+          show: false,
+          message: ''
         }
+      }
+    case 'USER/SET_AUTH_USER':
+      return {
+        ...state,
+        userData: action.data,
       }
     default:
       return {
-        data: {},
-        error: false,
+        ...state,
+        error: true,
       }
   }
 };

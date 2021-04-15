@@ -12,7 +12,7 @@ const App = () => {
       <Route exact={exact} path={path}>
         <UserContext.Consumer>
           {props => {
-            if (!props.authenticatedUser.id && path !== '/') return <UnauthorizedUser/>;
+            if (!props.userData._id && path !== '/') return <UnauthorizedUser/>;
             return <Component {...props} />;
           }}
         </UserContext.Consumer>

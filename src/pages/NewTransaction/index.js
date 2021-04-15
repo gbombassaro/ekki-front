@@ -9,8 +9,8 @@ import {newTransaction} from './actions';
 import {toNumber} from '../../utils'
 
 const NewTransaction = props => {
-  const {data, dispatch, authenticatedUser} = props;
-  const {beneficiaryList} = data;
+  const {userData, dispatch} = props;
+  const {_id, balance, beneficiaryList} = userData;
 
   const [page, setPage] = useState(0);
   const [transactionDestiny, setTransactionDestiny] = useState({});
@@ -45,16 +45,16 @@ const NewTransaction = props => {
 
   const executeTransaction = () => {
     newTransaction({ 
-      origin: authenticatedUser.id,
+      origin: _id,
       destiny: transactionDestiny.id,
       value: transactionValue
     })
     .then(() => {
-      dispatch({type: 'notification', show: true, message: 'Transação realizada com sucesso.'});
+      dispatch({type: 'NOTIFICATION/SHOW', message: 'Transação realizada com sucesso.'});
     })
     .catch(payload => {
       const error = JSON.parse(payload.request.response);
-      dispatch({type: 'notification', show: true, message: error.message});
+      dispatch({type: 'NOTIFICATION/SHOW', message: error.message});
     });
   }
 
@@ -76,7 +76,7 @@ const NewTransaction = props => {
         <Section padding='32px' justifyContent='center'>
           <Box width='100%' maxWidth={600} flexDirection='column'>
             <Balance
-              balance={data.balance}
+              balance={balance}
               transactionValue={transactionValue}
             />
             <TransactionForm

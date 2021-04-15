@@ -5,10 +5,9 @@ import {map} from 'lodash';
 import Section from '../../components/section';
 import Box from '../../components/box';
 
-const TransactionHistory = props => {
+const TransactionHistory = ({userData}) => {
 
-  const {data} = props;
-  const {transactionHistory} = data;
+  const {transactionHistory} = userData;
 
   const headerActionButtons = [
     {

@@ -2,8 +2,7 @@ import React from 'react';
 import Box from '../../components/box';
 import {parseBalance, completeDate} from '../../utils';
 
-const Transaction = props => {
-  const {data} = props; 
+const Transaction = ({data}) => {
   const {id, value, status, processedAt} = data;
   const transactionDate = new Date(processedAt);
   return (
@@ -14,6 +13,10 @@ const Transaction = props => {
       <pre>{completeDate(transactionDate)}</pre>
     </Box>
   )
+}
+
+Transaction.defaultProps = {
+  data: {}
 }
 
 export default Transaction;

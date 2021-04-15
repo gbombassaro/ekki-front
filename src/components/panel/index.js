@@ -5,10 +5,9 @@ import {parseName, parseBalance} from '../../utils'
 import Button from '../button';
 import {Link} from 'react-router-dom';
 
-const Panel = props => {
+const Panel = ({userData}) => {
 
-  const {data} = props;
-  const {name, balance, credit, creditLimit} = data;
+  const {name, balance, credit, creditLimit} = userData;
 
   const boxWidth = ['calc(100% - 50px)', 'calc(100% - 66px)'];
   const boxPadding = ['24px', '32px']
