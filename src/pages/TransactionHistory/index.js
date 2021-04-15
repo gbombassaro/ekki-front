@@ -9,6 +9,7 @@ import Transaction from './transaction';
 const TransactionHistory = ({userData}) => {
 
   const {transactionHistory} = userData;
+  const isEmpty = transactionHistory.length < 1;
 
   const headerActionButtons = [
     {
@@ -22,8 +23,12 @@ const TransactionHistory = ({userData}) => {
     <React.Fragment>
       <Header title='Histórico de transações' actionButtons={headerActionButtons} />
       <Section justifyContent='center'>
-        <Box width='100%' maxWidth={600} flexDirection='column'>
-          {map(transactionHistory.reverse(), transaction => <Transaction key={transaction.id} data={transaction} /> )}
+        <Box width='100%' maxWidth={600} flexDirection='column' alignItems={isEmpty ? 'center' : 'flex-start'}>
+          {isEmpty ? (
+            <p>Ops! Parece que você ainda não fez uma transação.</p>
+          ) : (
+            map(transactionHistory.reverse(), transaction => <Transaction key={transaction.id} data={transaction} />)
+          )}
         </Box>
       </Section>
     </React.Fragment>

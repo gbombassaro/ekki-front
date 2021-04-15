@@ -11,6 +11,7 @@ import Balance from './balance';
 
 const NewTransaction = ({userData, dispatch, updateData}) => {
   const {_id, balance, beneficiaryList} = userData;
+  const emptyBeneficiaries = beneficiaryList.length < 1;
   const [page, setPage] = useState(0);
   const [transactionDestiny, setTransactionDestiny] = useState({});
   const [transactionValue, setTransactionValue] = useState(0);
@@ -71,17 +72,23 @@ const NewTransaction = ({userData, dispatch, updateData}) => {
   return (
     <React.Fragment>
       <Header title='Transferir' actionButtons={headerActionButtons} />
-      {page === 0 &&
+      {page === 0 && (
         <Section padding='32px' justifyContent={['flex-start', 'center']}>
-          <UserList
-            title='Para quem será a transferência?'
-            data={beneficiaryList}
-            onClick={handleDestinySelection}
-            primaryInformation='name'
-            secondaryInformation='cpf'
-          />
+          {emptyBeneficiaries ? (
+            <Box>
+              <p>Ops! Parece que você ainda não cadastrou favorecidos.</p>
+            </Box>
+          ) : (
+            <UserList
+              title='Para quem será a transferência?'
+              data={beneficiaryList}
+              onClick={handleDestinySelection}
+              primaryInformation='name'
+              secondaryInformation='cpf'
+            />
+          )}
         </Section>
-      }
+      )}
       {page === 1 &&
         <Section padding='32px' justifyContent='center'>
           <Box width='100%' maxWidth={600} flexDirection='column'>
