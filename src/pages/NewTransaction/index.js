@@ -6,8 +6,9 @@ import UserList from '../../components/userList';
 import Box from '../../components/box';
 import Balance from './balance';
 import {newTransaction} from './actions';
+import {toNumber} from '../../utils';
 
-const NewTransaction = ({userData, dispatch}) => {
+const NewTransaction = ({userData, dispatch, updateData}) => {
   const {_id, balance, beneficiaryList} = userData;
   const [page, setPage] = useState(0);
   const [transactionDestiny, setTransactionDestiny] = useState({});
@@ -38,6 +39,7 @@ const NewTransaction = ({userData, dispatch}) => {
         buttonMessage: 'Ir para a home',
         path: '/home'
       })
+      updateData(dispatch);
     })
     .catch(payload => {
       const error = JSON.parse(payload.request.response);
@@ -45,11 +47,15 @@ const NewTransaction = ({userData, dispatch}) => {
     });
   }
 
+  const handleTransactionValue = value => {
+    return setTransactionValue(toNumber(value))
+  }
+
   const transactionFormData = [
     {
       id: 'value',
       value: transactionValue,
-      onChange: setTransactionValue,
+      onChange: handleTransactionValue,
       type: 'number',
     }
   ]
