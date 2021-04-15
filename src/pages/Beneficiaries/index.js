@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import Header from '../../components/header';
 import Section from '../../components/section';
-import BeneficiaryForm from '../../components/form';
-import {newUser, newBeneficiary} from './actions';
+import FavoriteForm from '../../components/form';
+import {newFavorite} from './actions';
 
-const NewBeneficiary = props => {
+const NewFavorite = ({dispatch, updateData}) => {
 
-  const {userData, dispatch} = props;
   const [name, setName] = useState();
   const [cpf, setCpf] = useState();
   const [phone, setPhone] = useState();
@@ -25,7 +24,7 @@ const NewBeneficiary = props => {
     }
   ]
 
-  const beneficiaryFormData = [
+  const favoriteFormData = [
     {
       id: 'name',
       label: 'Nome',
@@ -49,13 +48,14 @@ const NewBeneficiary = props => {
   ]
 
   const handleClick = () => {
-    newUser({
+    newFavorite({
       name,
       cpf,
       phone
     })
-    .then(response => {
-      newBeneficiary({originId: userData._id, beneficiaryId: response._id})
+    .then(() => {
+      dispatch({type: 'NOTIFICATION/SHOW', message: 'Novo favorecido cadastrado com sucesso.'});
+      updateData(dispatch);
     })
     .catch(payload => {
       const error = JSON.parse(payload.request.response);
@@ -67,8 +67,8 @@ const NewBeneficiary = props => {
     <React.Fragment>
       <Header title='Novo favorecido' actionButtons={headerActionButtons} />
       <Section padding='32px' justifyContent='center'>
-        <BeneficiaryForm
-          data={beneficiaryFormData}
+        <FavoriteForm
+          data={favoriteFormData}
           title='Insira os dados do favorecido'
           primaryButtonText='Cadastrar'
           primaryButtonAction={handleClick}
@@ -79,4 +79,4 @@ const NewBeneficiary = props => {
   )
 }
 
-export default NewBeneficiary;
+export default NewFavorite;
