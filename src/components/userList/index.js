@@ -20,7 +20,7 @@ const UserList = props => {
       <Box width='100%'>
         {map(data, entry => (
           <User
-            key={entry._id}
+            key={entry.id}
             primaryInformation={entry[primaryInformation]}
             secondaryInformation={entry[secondaryInformation]}
             onClick={altId => onClick({entry, altId})}

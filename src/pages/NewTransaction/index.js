@@ -6,7 +6,6 @@ import UserForm from '../../components/userList';
 import Box from '../../components/box';
 import Balance from './balance';
 import {newTransaction} from './actions';
-import {toNumber} from '../../utils'
 
 const NewTransaction = props => {
   const {userData, dispatch} = props;
@@ -14,29 +13,13 @@ const NewTransaction = props => {
 
   const [page, setPage] = useState(0);
   const [transactionDestiny, setTransactionDestiny] = useState({});
-  const [transactionValue, setTransactionValue] = useState();
+  const [transactionValue, setTransactionValue] = useState(0);
   const [validation, setValidation] = useState(false);
 
   useEffect(() => {
     if (!transactionValue) setValidation(false);
     else setValidation(true);
   }, [transactionValue]);
-
-  const transactionFormData = [
-    {
-      id: 'value',
-      value: transactionValue,
-      onChange: setTransactionValue,
-      type: 'number',
-    }
-  ]
-  const headerActionButtons = [
-    {
-      id: 'goback',
-      children: 'Voltar para a home',
-      link: '/home',
-    }
-  ]
 
   const handleDestinySelection = data => {
     setTransactionDestiny(data.entry);
@@ -58,15 +41,31 @@ const NewTransaction = props => {
     });
   }
 
+  const transactionFormData = [
+    {
+      id: 'value',
+      value: transactionValue,
+      onChange: setTransactionValue,
+      type: 'number',
+    }
+  ]
+  const headerActionButtons = [
+    {
+      id: 'goback',
+      children: 'Voltar para a home',
+      link: '/home',
+    }
+  ]
+
   return (
     <React.Fragment>
       <Header title='Transferir' actionButtons={headerActionButtons} />
       {page === 0 &&
         <Section padding='32px' justifyContent={['flex-start', 'center']}>
           <UserForm
+            title='Para quem será a transferência?'
             data={beneficiaryList}
             onClick={handleDestinySelection}
-            title='Para quem será a transferência?'
             primaryInformation='name'
             secondaryInformation='cpf'
           />
@@ -80,10 +79,10 @@ const NewTransaction = props => {
               transactionValue={transactionValue}
             />
             <TransactionForm
+              title='Qual o valor?'
               data={transactionFormData}
               primaryButtonAction={executeTransaction}
               secondaryButtonAction={() => setPage(0)}
-              title='Qual o valor?'
               primaryButtonText='Transferir'
               secondaryButtonText='Voltar'
               disablePrimaryButton={!validation}
