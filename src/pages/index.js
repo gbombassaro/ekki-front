@@ -1,4 +1,5 @@
 export {default as SelectUser} from './SelectUser';
+export {default as NewUser} from './NewUser';
 export {default as Home} from './Home';
 export {default as Beneficiaries} from './Beneficiaries';
 export {default as NewTransaction} from './NewTransaction';

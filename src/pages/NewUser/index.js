@@ -27,8 +27,8 @@ const NewUser = ({dispatch, loadData}) => {
       .then(() => {
         setFormStatus({
           message: 'Abertura de conta realizada com sucesso.',
-          buttonMessage: 'Ir para a home',
-          path: '/home'
+          buttonMessage: 'Voltar para página inicial',
+          path: '/'
         });
         loadData(dispatch);
       })
@@ -41,8 +41,8 @@ const NewUser = ({dispatch, loadData}) => {
   const headerActionButtons = [
     {
       id: 'goback',
-      children: 'Voltar para a home',
-      link: '/home',
+      children: 'Voltar',
+      link: '/',
     }
   ];
 
