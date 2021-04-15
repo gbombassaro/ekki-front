@@ -14,16 +14,12 @@ const NewUser = ({dispatch, loadData}) => {
   const [formStatus, setFormStatus] = useState({});
 
   useEffect(() => {
-    if (!name || !cpf || !phone) setValidation(false);
+    if (!name || !cpf || cpf.length < 11 || !phone || phone.length < 11) setValidation(false);
     else setValidation(true);
   }, [name, cpf, phone]);
 
   const handleClick = () => {
-    newUser({
-      name,
-      cpf,
-      phone
-    })
+    newUser({name, cpf, phone})
       .then(() => {
         setFormStatus({
           message: 'Abertura de conta realizada com sucesso.',
