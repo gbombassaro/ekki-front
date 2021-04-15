@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Header from '../../components/header';
 import Section from '../../components/section';
-import BeneficiaryForm from '../../components/form';
+import NewUserForm from '../../components/form';
 import {newUser} from './actions';
 
 const NewUser = ({dispatch, loadData}) => {
@@ -10,11 +10,32 @@ const NewUser = ({dispatch, loadData}) => {
   const [cpf, setCpf] = useState();
   const [phone, setPhone] = useState();
   const [validation, setValidation] = useState(false);
+  const [formStatus, setFormStatus] = useState({});
 
   useEffect(() => {
     if (!name || !cpf || !phone) setValidation(false);
     else setValidation(true);
   }, [name, cpf, phone]);
+
+  const handleClick = () => {
+    newUser({
+      name,
+      cpf,
+      phone
+    })
+    .then(() => {
+      setFormStatus({
+        message: 'Abertura de conta realizada com sucesso.',
+        buttonMessage: 'Ir para a home',
+        path: '/home'
+      })
+      loadData(dispatch);
+    })
+    .catch(payload => {
+      const error = JSON.parse(payload.request.response);
+      dispatch({type: 'NOTIFICATION/SHOW', message: error.message});
+    })
+  }
 
   const headerActionButtons = [
     {
@@ -24,7 +45,7 @@ const NewUser = ({dispatch, loadData}) => {
     }
   ]
 
-  const beneficiaryFormData = [
+  const newUserFormData = [
     {
       id: 'name',
       label: 'Nome',
@@ -47,32 +68,17 @@ const NewUser = ({dispatch, loadData}) => {
     }
   ]
 
-  const handleClick = () => {
-    newUser({
-      name,
-      cpf,
-      phone
-    })
-    .then(() => {
-      dispatch({type: 'NOTIFICATION/SHOW', message: 'usuário criado com sucesso'});
-      loadData(dispatch);
-    })
-    .catch(payload => {
-      const error = JSON.parse(payload.request.response);
-      dispatch({type: 'NOTIFICATION/SHOW', message: error.message});
-    })
-  }
-
   return (
     <React.Fragment>
       <Header title='Abrir conta' actionButtons={headerActionButtons} />
       <Section padding='32px' justifyContent='center'>
-        <BeneficiaryForm
-          data={beneficiaryFormData}
+        <NewUserForm
+          data={newUserFormData}
           title='Insira os seus dados'
           primaryButtonText='Abrir Conta'
           primaryButtonAction={handleClick}
           disablePrimaryButton={!validation}
+          successData={formStatus}
         />
       </Section>
     </React.Fragment>

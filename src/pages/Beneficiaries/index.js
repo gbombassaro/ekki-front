@@ -10,11 +10,32 @@ const NewFavorite = ({dispatch, updateData}) => {
   const [cpf, setCpf] = useState();
   const [phone, setPhone] = useState();
   const [validation, setValidation] = useState(false);
+  const [formStatus, setFormStatus] = useState({});
 
   useEffect(() => {
     if (!name || !cpf || !phone) setValidation(false);
     else setValidation(true);
   }, [name, cpf, phone]);
+
+  const handleClick = () => {
+    newFavorite({
+      name,
+      cpf,
+      phone
+    })
+    .then(() => {
+      setFormStatus({
+        message: 'Favorecido cadastrado com sucesso.',
+        buttonMessage: 'Ir para a home',
+        path: '/home'
+      })
+      updateData(dispatch);
+    })
+    .catch(payload => {
+      const error = JSON.parse(payload.request.response);
+      dispatch({type: 'NOTIFICATION/SHOW', message: error.message});
+    })
+  }
 
   const headerActionButtons = [
     {
@@ -47,22 +68,6 @@ const NewFavorite = ({dispatch, updateData}) => {
     }
   ]
 
-  const handleClick = () => {
-    newFavorite({
-      name,
-      cpf,
-      phone
-    })
-    .then(() => {
-      dispatch({type: 'NOTIFICATION/SHOW', message: 'Novo favorecido cadastrado com sucesso.'});
-      updateData(dispatch);
-    })
-    .catch(payload => {
-      const error = JSON.parse(payload.request.response);
-      dispatch({type: 'NOTIFICATION/SHOW', message: error.message});
-    })
-  }
-
   return (
     <React.Fragment>
       <Header title='Novo favorecido' actionButtons={headerActionButtons} />
@@ -73,6 +78,7 @@ const NewFavorite = ({dispatch, updateData}) => {
           primaryButtonText='Cadastrar'
           primaryButtonAction={handleClick}
           disablePrimaryButton={!validation}
+          successData={formStatus}
         />
       </Section>
     </React.Fragment>
