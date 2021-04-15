@@ -1,9 +1,11 @@
 import {map} from 'lodash';
 import React from 'react';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Section from '../components/section';
 import User from '../components/user';
+import Box from '../components/box';
 import {parseBalance} from '../utils';
 
 const SelectUser = ({dispatch, usersList}) => {
@@ -24,17 +26,24 @@ const SelectUser = ({dispatch, usersList}) => {
       color='secondary'
     >
       {map(usersList, (user, key) => (
-        <Link to='/home' key={user._id}>
-          <User
-            altId={key}
-            primaryInformation={user.name}
-            secondaryInformation={parseBalance(user.balance)}
-            onClick={dispatchSelectedUser}
-          />
-        </Link>
+        <Box disableFlex width='100%' maxWidth={600}>
+          <Link to='/home' key={user._id}>
+            <User
+              altId={key}
+              primaryInformation={user.name}
+              secondaryInformation={parseBalance(user.balance)}
+              onClick={dispatchSelectedUser}
+              />
+          </Link>
+        </Box>
       ))}
     </Section>
   );
 };
+
+SelectUser.propTypes = {
+  dispatch: PropTypes.func,
+  usersList: PropTypes.array
+}
 
 export default SelectUser;

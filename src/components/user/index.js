@@ -7,7 +7,7 @@ import Box from '../box';
 const Container = styled(Box)`
   &:hover {
     cursor: pointer;
-    box-shadow: 0 0 0 1px black;
+    box-shadow: 0 0 0 1px ${props => props.theme.colors.secondary};
   }
   &:active {
     box-shadow: unset;
@@ -22,7 +22,7 @@ const User = ({altId, primaryInformation, secondaryInformation, onClick}) => {
 
   return (
     <Container
-      width={['calc(100% - 48px)', '400px', '550px']}
+      width='calc(100% - 48px)'
       height={60}
       alignItems='center'
       justifyContent='space-between'
