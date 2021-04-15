@@ -5,11 +5,11 @@ import Header from '../../components/header';
 import Section from '../../components/section';
 import {newUser} from './actions';
 
-const NewUser = ({dispatch, loadData}) => {
+const NewUser = ({dispatch, loadUsers}) => {
 
-  const [name, setName] = useState();
-  const [cpf, setCpf] = useState();
-  const [phone, setPhone] = useState();
+  const [name, setName] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [phone, setPhone] = useState('');
   const [validation, setValidation] = useState(false);
   const [formStatus, setFormStatus] = useState({});
 
@@ -26,7 +26,7 @@ const NewUser = ({dispatch, loadData}) => {
           buttonMessage: 'Voltar para página inicial',
           path: '/'
         });
-        loadData(dispatch);
+        loadUsers(dispatch);
       })
       .catch(payload => {
         const error = JSON.parse(payload.request.response);

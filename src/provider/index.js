@@ -1,7 +1,7 @@
 import React, {createContext, useReducer, useEffect} from 'react';
 
 import Notification from '../components/notification';
-import {loadData, updateData} from './actions';
+import {loadUsers, updateData} from './actions';
 import {globalStateReducer} from './reducer';
 
 export const UserContext = createContext();
@@ -18,10 +18,10 @@ const StateProvider = ({children}) => {
   };
 
   const [state, dispatch] = useReducer(globalStateReducer, initialState);
-  const providerState = {...state, dispatch, updateData};
+  const providerState = {...state, dispatch, loadUsers, updateData};
 
   useEffect(() => {
-    loadData(dispatch);
+    loadUsers(dispatch);
     return () => localStorage.removeItem('authenticatedUser');
   }, []);
   

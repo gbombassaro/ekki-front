@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const loadData = dispatch => {
+export const loadUsers = dispatch => {
   axios.get('http://localhost:3001/api/user/list')
     .then(payload => {
       dispatch({type: 'DATA/LOAD', payload: payload.data});

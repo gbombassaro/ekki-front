@@ -1,4 +1,4 @@
-import {map} from 'lodash';
+import {map, orderBy} from 'lodash';
 import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -11,8 +11,10 @@ import Button from '../components/button';
 
 const SelectUser = ({dispatch, usersList}) => {
 
+  const orderedUsersList = orderBy(usersList, 'createdAt', 'desc');
+
   const dispatchSelectedUser = id => {
-    const selectedUser = usersList[id];
+    const selectedUser = orderedUsersList[id];
     localStorage.setItem('authenticatedUser', selectedUser._id);
     dispatch({type: 'USER/SET_AUTH_USER', data: selectedUser});
     dispatch({type: 'NOTIFICATION/SHOW', message: `Usuário ${selectedUser.name} autenticado`});
@@ -33,7 +35,7 @@ const SelectUser = ({dispatch, usersList}) => {
             <Button hasIcon>Abrir nova conta</Button>
           </Link>
         </Box>
-        {map(usersList, (user, key) => (
+        {map(orderedUsersList, (user, key) => (
           <Link to='/home' key={user._id}>
             <User
               altId={key}

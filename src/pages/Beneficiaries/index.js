@@ -7,9 +7,9 @@ import {newFavorite} from './actions';
 
 const NewFavorite = ({dispatch, updateData}) => {
 
-  const [name, setName] = useState();
-  const [cpf, setCpf] = useState();
-  const [phone, setPhone] = useState();
+  const [name, setName] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [phone, setPhone] = useState('');
   const [validation, setValidation] = useState(false);
   const [formStatus, setFormStatus] = useState({});
 
