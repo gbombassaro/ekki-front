@@ -7,6 +7,7 @@ import Section from '../components/section';
 import User from '../components/user';
 import Box from '../components/box';
 import {parseBalance} from '../utils';
+import Button from '../components/button';
 
 const SelectUser = ({dispatch, usersList}) => {
 
@@ -25,18 +26,23 @@ const SelectUser = ({dispatch, usersList}) => {
       justifyContent='center'
       color='secondary'
     >
-      {map(usersList, (user, key) => (
-        <Box disableFlex width='100%' maxWidth={600}>
+      <Box disableFlex width='100%' maxWidth={600}>
+        <Box width='100%' justifyContent='flex-end' marginBottom={4}>
+          <Link to='/novo-usuario'>
+            <Button hasIcon>Abrir nova conta</Button>
+          </Link>
+        </Box>
+        {map(usersList, (user, key) => (
           <Link to='/home' key={user._id}>
             <User
               altId={key}
               primaryInformation={user.name}
               secondaryInformation={parseBalance(user.balance)}
               onClick={dispatchSelectedUser}
-              />
+            />
           </Link>
-        </Box>
-      ))}
+        ))}
+      </Box>
     </Section>
   );
 };

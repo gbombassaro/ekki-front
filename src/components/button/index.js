@@ -18,10 +18,10 @@ const Button = styled.button`
   font-size: 16px;
   &:hover {
     cursor: pointer;
-    box-shadow: 0 0 0 1px black;
+    box-shadow: 0 0 0 1px ${props => props.theme.colors.secondary};
   }
   &:focus{ 
-    box-shadow: 0 0 0 1px black;
+    box-shadow: 0 0 0 1px ${props => props.theme.colors.secondary};
     outline: unset;
   }
   &:active {
