@@ -1,7 +1,8 @@
+import {debounce} from 'lodash';
 import React from 'react';
 import styled from 'styled-components';
-import {debounce} from 'lodash';
-import closeIcon from '../../assets/close.svg'
+
+import closeIcon from '../../assets/close.svg';
 
 const Body = styled.div`
   position: absolute;
@@ -15,11 +16,11 @@ const Body = styled.div`
     cursor: pointer;
     fill: white;
   }
-`
+`;
 const Message = styled.p`
   font-size: 16px;
   color: white;
-`
+`;
 
 const Notification = ({data, dispatch}) => {
   const {show, message} = data;
@@ -27,7 +28,7 @@ const Notification = ({data, dispatch}) => {
 
   const close = () => {
     dispatch({type: 'NOTIFICATION/CLOSE'});
-  }
+  };
 
   const autoCloseNotification = debounce(close, 4000);
   autoCloseNotification();
@@ -37,7 +38,7 @@ const Notification = ({data, dispatch}) => {
       <img src={closeIcon} onClick={close} />
       <Message>{message}</Message>
     </Body>
-  )
-}
+  );
+};
 
 export default Notification;

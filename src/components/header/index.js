@@ -1,9 +1,10 @@
-import React from 'react';
-import Box from '../box';
-import Button from '../button';
 import {map} from 'lodash';
 import PropTypes from 'prop-types';
+import React from 'react';
 import {Link} from 'react-router-dom';
+
+import Box from '../box';
+import Button from '../button';
 import Section from '../section';
 
 const Header = ({actionButtons, isHome, title}) => {
@@ -32,12 +33,12 @@ const Header = ({actionButtons, isHome, title}) => {
         ))}
       </Box>
     </Section>
-  )
-}
+  );
+};
 
 Header.propTypes = {
   actionButtons: PropTypes.array,
   title: PropTypes.string,
-}
+};
 
 export default Header;

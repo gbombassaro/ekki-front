@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
+
+import NewUserForm from '../../components/form';
 import Header from '../../components/header';
 import Section from '../../components/section';
-import NewUserForm from '../../components/form';
 import {newUser} from './actions';
 
 const NewUser = ({dispatch, loadData}) => {
@@ -23,19 +24,19 @@ const NewUser = ({dispatch, loadData}) => {
       cpf,
       phone
     })
-    .then(() => {
-      setFormStatus({
-        message: 'Abertura de conta realizada com sucesso.',
-        buttonMessage: 'Ir para a home',
-        path: '/home'
+      .then(() => {
+        setFormStatus({
+          message: 'Abertura de conta realizada com sucesso.',
+          buttonMessage: 'Ir para a home',
+          path: '/home'
+        });
+        loadData(dispatch);
       })
-      loadData(dispatch);
-    })
-    .catch(payload => {
-      const error = JSON.parse(payload.request.response);
-      dispatch({type: 'NOTIFICATION/SHOW', message: error.message});
-    })
-  }
+      .catch(payload => {
+        const error = JSON.parse(payload.request.response);
+        dispatch({type: 'NOTIFICATION/SHOW', message: error.message});
+      });
+  };
 
   const headerActionButtons = [
     {
@@ -43,7 +44,7 @@ const NewUser = ({dispatch, loadData}) => {
       children: 'Voltar para a home',
       link: '/home',
     }
-  ]
+  ];
 
   const newUserFormData = [
     {
@@ -66,7 +67,7 @@ const NewUser = ({dispatch, loadData}) => {
       onChange: setPhone,
       maxLength: 11
     }
-  ]
+  ];
 
   return (
     <React.Fragment>
@@ -82,7 +83,7 @@ const NewUser = ({dispatch, loadData}) => {
         />
       </Section>
     </React.Fragment>
-  )
-}
+  );
+};
 
 export default NewUser;

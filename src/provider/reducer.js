@@ -4,12 +4,12 @@ export const globalStateReducer = (state, action) => {
       return {
         ...state,
         usersList: action.payload
-      }
+      };
     case 'DATA/UPDATE':
       return {
         ...state,
         userData: action.payload
-      }
+      };
     case 'NOTIFICATION/SHOW':
       return {
         ...state,
@@ -17,7 +17,7 @@ export const globalStateReducer = (state, action) => {
           show: true,
           message: action.message,
         }
-      }
+      };
     case 'NOTIFICATION/CLOSE':
       return {
         ...state,
@@ -25,16 +25,16 @@ export const globalStateReducer = (state, action) => {
           show: false,
           message: ''
         }
-      }
+      };
     case 'USER/SET_AUTH_USER':
       return {
         ...state,
         userData: action.data,
-      }
+      };
     default:
       return {
         ...state,
         error: true,
-      }
+      };
   }
 };

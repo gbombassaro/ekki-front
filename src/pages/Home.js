@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Header from '../components/header';
 import Panel from '../components/panel';
 
@@ -23,14 +24,14 @@ const Home = props => {
       link: '/favorecidos',
       hasIcon: true
     },
-  ]
+  ];
 
   return (
     <React.Fragment>
       <Header title="Ekki" actionButtons={actionButtons} isHome/>
       <Panel {...props} />
     </React.Fragment>
-  )
-}
+  );
+};
 
 export default Home;

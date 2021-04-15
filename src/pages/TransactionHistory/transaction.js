@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Box from '../../components/box';
 import {parseBalance, completeDate} from '../../utils';
 
@@ -12,11 +13,11 @@ const Transaction = ({data}) => {
       <pre>{status}</pre>
       <pre>{completeDate(transactionDate)}</pre>
     </Box>
-  )
-}
+  );
+};
 
 Transaction.defaultProps = {
   data: {}
-}
+};
 
 export default Transaction;

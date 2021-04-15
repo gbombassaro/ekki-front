@@ -1,10 +1,11 @@
 import {map} from 'lodash';
+import PropTypes from 'prop-types';
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 import Box from '../box';
 import Button from '../button';
 import Input from '../input';
-import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
 
 const Form = props => {
 
@@ -27,7 +28,7 @@ const Form = props => {
         <Button hasIcon>{successData.buttonMessage}</Button>
       </Link>
     </Box>
-  )
+  );
 
   return (
     <Box width='100%' flexDirection='column' maxWidth={600}>
@@ -46,8 +47,8 @@ const Form = props => {
         )}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 Form.propTypes = {
   data: PropTypes.array.isRequired,
@@ -63,6 +64,6 @@ Form.propTypes = {
     buttonMessage: PropTypes.string,
     path: PropTypes.string
   })
-}
+};
 
 export default Form;

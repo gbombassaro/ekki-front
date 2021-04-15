@@ -1,7 +1,8 @@
 import React from 'react';
-import Box from '../box';
-import arrowForwardIcon from '../../assets/arrow-forward.svg';
 import styled from 'styled-components';
+
+import arrowForwardIcon from '../../assets/arrow-forward.svg';
+import Box from '../box';
 
 const Container = styled(Box)`
   &:hover {
@@ -11,7 +12,7 @@ const Container = styled(Box)`
   &:active {
     box-shadow: unset;
   }
-`
+`;
 
 const User = ({altId, primaryInformation, secondaryInformation, onClick}) => {
 
@@ -39,7 +40,7 @@ const User = ({altId, primaryInformation, secondaryInformation, onClick}) => {
         <img src={arrowForwardIcon} />
       </Box> 
     </Container>
-  )
-}
+  );
+};
 
 export default User;

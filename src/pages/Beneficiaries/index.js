@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
+
+import FavoriteForm from '../../components/form';
 import Header from '../../components/header';
 import Section from '../../components/section';
-import FavoriteForm from '../../components/form';
 import {newFavorite} from './actions';
 
 const NewFavorite = ({dispatch, updateData}) => {
@@ -23,19 +24,19 @@ const NewFavorite = ({dispatch, updateData}) => {
       cpf,
       phone
     })
-    .then(() => {
-      setFormStatus({
-        message: 'Favorecido cadastrado com sucesso.',
-        buttonMessage: 'Ir para a home',
-        path: '/home'
+      .then(() => {
+        setFormStatus({
+          message: 'Favorecido cadastrado com sucesso.',
+          buttonMessage: 'Ir para a home',
+          path: '/home'
+        });
+        updateData(dispatch);
       })
-      updateData(dispatch);
-    })
-    .catch(payload => {
-      const error = JSON.parse(payload.request.response);
-      dispatch({type: 'NOTIFICATION/SHOW', message: error.message});
-    })
-  }
+      .catch(payload => {
+        const error = JSON.parse(payload.request.response);
+        dispatch({type: 'NOTIFICATION/SHOW', message: error.message});
+      });
+  };
 
   const headerActionButtons = [
     {
@@ -43,7 +44,7 @@ const NewFavorite = ({dispatch, updateData}) => {
       children: 'Voltar para a home',
       link: '/home',
     }
-  ]
+  ];
 
   const favoriteFormData = [
     {
@@ -66,7 +67,7 @@ const NewFavorite = ({dispatch, updateData}) => {
       onChange: setPhone,
       maxLength: 11
     }
-  ]
+  ];
 
   return (
     <React.Fragment>
@@ -82,7 +83,7 @@ const NewFavorite = ({dispatch, updateData}) => {
         />
       </Section>
     </React.Fragment>
-  )
-}
+  );
+};
 
 export default NewFavorite;

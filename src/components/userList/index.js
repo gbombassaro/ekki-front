@@ -1,8 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {map} from 'lodash';
-import User from '../user';
+import PropTypes from 'prop-types';
+import React from 'react';
+
 import Box from '../box';
+import User from '../user';
 
 const UserList = props => {
 
@@ -28,8 +29,8 @@ const UserList = props => {
         ))}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 UserList.propTypes = {
   data: PropTypes.array.isRequired,
@@ -37,6 +38,6 @@ UserList.propTypes = {
   primaryButtonAction: PropTypes.func,
   secondaryButtonAction: PropTypes.func,
   title: PropTypes.string,
-}
+};
 
 export default UserList;

@@ -1,9 +1,10 @@
-import React from 'react';
-import Header from '../../components/header';
-import Transaction from './transaction';
 import {map} from 'lodash';
-import Section from '../../components/section';
+import React from 'react';
+
 import Box from '../../components/box';
+import Header from '../../components/header';
+import Section from '../../components/section';
+import Transaction from './transaction';
 
 const TransactionHistory = ({userData}) => {
 
@@ -15,7 +16,7 @@ const TransactionHistory = ({userData}) => {
       children: 'Voltar para a home',
       link: '/home',
     }
-  ]
+  ];
 
   return (
     <React.Fragment>
@@ -26,7 +27,7 @@ const TransactionHistory = ({userData}) => {
         </Box>
       </Section>
     </React.Fragment>
-  )
-}
+  );
+};
 
 export default TransactionHistory;

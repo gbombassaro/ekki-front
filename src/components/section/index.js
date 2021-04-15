@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {color, flexbox, layout, space} from 'styled-system';
-import PropTypes from 'prop-types';
 
 const Section = styled.section`
   display: flex;
@@ -8,7 +8,7 @@ const Section = styled.section`
   ${layout};
   ${flexbox};
   ${color};
-`
+`;
 
 Section.propTypes = {
   alignItems: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
@@ -17,6 +17,6 @@ Section.propTypes = {
   flexWrap: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   bg: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
   color: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
-}
+};
 
 export default Section;

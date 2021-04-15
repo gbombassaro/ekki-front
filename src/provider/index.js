@@ -1,7 +1,8 @@
 import React, {createContext, useReducer, useEffect} from 'react';
+
+import Notification from '../components/notification';
 import {loadData, updateData} from './actions';
 import {globalStateReducer} from './reducer';
-import Notification from '../components/notification';
 
 export const UserContext = createContext();
 
@@ -30,6 +31,6 @@ const StateProvider = ({children}) => {
       <Notification data={state.notification} dispatch={dispatch} />
     </UserContext.Provider>
   );
-}
+};
 
 export default StateProvider;

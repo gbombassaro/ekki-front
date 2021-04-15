@@ -1,9 +1,10 @@
+import {map} from 'lodash';
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 import Section from '../components/section';
 import User from '../components/user';
-import {Link} from 'react-router-dom'
-import {map} from 'lodash';
-import {parseBalance} from '../utils'
+import {parseBalance} from '../utils';
 
 const SelectUser = ({dispatch, usersList}) => {
 
@@ -33,7 +34,7 @@ const SelectUser = ({dispatch, usersList}) => {
         </Link>
       ))}
     </Section>
-  )
-}
+  );
+};
 
 export default SelectUser;

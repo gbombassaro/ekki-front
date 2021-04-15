@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
+
+import Box from '../../components/box';
+import TransactionForm from '../../components/form';
 import Header from '../../components/header';
 import Section from '../../components/section';
-import TransactionForm from '../../components/form';
 import UserList from '../../components/userList';
-import Box from '../../components/box';
-import Balance from './balance';
-import {newTransaction} from './actions';
 import {toNumber} from '../../utils';
+import {newTransaction} from './actions';
+import Balance from './balance';
 
 const NewTransaction = ({userData, dispatch, updateData}) => {
   const {_id, balance, beneficiaryList} = userData;
@@ -25,7 +26,7 @@ const NewTransaction = ({userData, dispatch, updateData}) => {
   const handleDestinySelection = data => {
     setTransactionDestiny(data.entry);
     setPage(1);
-  }
+  };
 
   const executeTransaction = () => {
     newTransaction({ 
@@ -33,23 +34,23 @@ const NewTransaction = ({userData, dispatch, updateData}) => {
       destiny: transactionDestiny.id,
       value: transactionValue
     })
-    .then(() => {
-      setFormStatus({
-        message: 'Transação realizada com sucesso.',
-        buttonMessage: 'Ir para a home',
-        path: '/home'
+      .then(() => {
+        setFormStatus({
+          message: 'Transação realizada com sucesso.',
+          buttonMessage: 'Ir para a home',
+          path: '/home'
+        });
+        updateData(dispatch);
       })
-      updateData(dispatch);
-    })
-    .catch(payload => {
-      const error = JSON.parse(payload.request.response);
-      dispatch({type: 'NOTIFICATION/SHOW', message: error.message});
-    });
-  }
+      .catch(payload => {
+        const error = JSON.parse(payload.request.response);
+        dispatch({type: 'NOTIFICATION/SHOW', message: error.message});
+      });
+  };
 
   const handleTransactionValue = value => {
-    return setTransactionValue(toNumber(value))
-  }
+    return setTransactionValue(toNumber(value));
+  };
 
   const transactionFormData = [
     {
@@ -58,14 +59,14 @@ const NewTransaction = ({userData, dispatch, updateData}) => {
       onChange: handleTransactionValue,
       type: 'number',
     }
-  ]
+  ];
   const headerActionButtons = [
     {
       id: 'goback',
       children: 'Voltar para a home',
       link: '/home',
     }
-  ]
+  ];
 
   return (
     <React.Fragment>
@@ -104,7 +105,7 @@ const NewTransaction = ({userData, dispatch, updateData}) => {
         </Section>
       }
     </React.Fragment>
-  )
-}
+  );
+};
 
 export default NewTransaction;

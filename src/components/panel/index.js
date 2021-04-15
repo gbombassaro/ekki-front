@@ -1,16 +1,18 @@
-import React from 'react'
-import {Grid, Item} from '../grid'
-import Box from '../box'
-import {parseName, parseBalance} from '../../utils'
-import Button from '../button';
+import React from 'react';
 import {Link} from 'react-router-dom';
+
+import {parseName, parseBalance} from '../../utils';
+import Box from '../box';
+import Button from '../button';
+import {Grid, Item} from '../grid';
+
 
 const Panel = ({userData}) => {
 
   const {name, balance, credit, creditLimit} = userData;
 
   const boxWidth = ['calc(100% - 50px)', 'calc(100% - 66px)'];
-  const boxPadding = ['24px', '32px']
+  const boxPadding = ['24px', '32px'];
 
   const Welcome = () => (
     <Box
@@ -26,7 +28,7 @@ const Panel = ({userData}) => {
         <Button>Voltar</Button>
       </Link>
     </Box>
-  )
+  );
 
   const BalanceInformation = () => (
     <Box
@@ -38,7 +40,7 @@ const Panel = ({userData}) => {
     >
       {parseBalance(balance)}
     </Box>
-  )
+  );
 
   const CreditInformation = () => (
     <Box
@@ -51,7 +53,7 @@ const Panel = ({userData}) => {
       Seu limite é de {parseBalance(creditLimit)}
       você utilizou {parseBalance(credit)}
     </Box>
-  )
+  );
 
   return (
     <Grid gridTemplateColumns={['100vw', '50vw 50vw']}>
@@ -63,7 +65,7 @@ const Panel = ({userData}) => {
         <CreditInformation/>
       </Item>
     </Grid>
-  )
-}
+  );
+};
 
 export default Panel;

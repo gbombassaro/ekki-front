@@ -1,6 +1,7 @@
 import React from 'react';
+
 import Box from '../../components/box';
-import {parseBalance} from '../../utils'
+import {parseBalance} from '../../utils';
 
 const Balance = ({balance, transactionValue}) => {
   let finalValue = balance - transactionValue;
@@ -10,7 +11,7 @@ const Balance = ({balance, transactionValue}) => {
       <p>Disponível: {parseBalance(balance)}</p>
       <p>Final: {parseBalance(finalValue)}</p>
     </Box>
-  )
-}
+  );
+};
 
 export default Balance;

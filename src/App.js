@@ -1,8 +1,9 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
+
+import UnauthorizedUser from './components/unauthorizedUser';
 import {SelectUser, Home, Beneficiaries, NewTransaction, TransactionHistory} from './pages';
 import {UserContext} from './provider';
-import UnauthorizedUser from './components/unauthorizedUser';
 
 const App = () => {
 
@@ -17,8 +18,8 @@ const App = () => {
           }}
         </UserContext.Consumer>
       </Route>
-    )
-  }
+    );
+  };
 
   return (
     <Switch>
@@ -32,6 +33,6 @@ const App = () => {
       </Route>
     </Switch>
   );
-}
+};
 
 export default App;

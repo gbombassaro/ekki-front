@@ -7,6 +7,6 @@ const Box = styled.div`
   ${flexbox};
   ${layout};
   ${space};
-`
+`;
 
 export default Box;

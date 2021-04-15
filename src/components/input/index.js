@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import Box from '../box';
 
 const StyledInput = styled.input`
@@ -14,12 +15,12 @@ const StyledInput = styled.input`
   &:focus {
     outline: unset;
   }
-`
+`;
 const Label = styled.label`
   font-size: 16px;
   margin-bottom: 8px;
   color: ${props => props.theme.colors.secondary};
-`
+`;
 
 const Input = props => {
 
@@ -27,14 +28,14 @@ const Input = props => {
 
   const handleChange = event => {
     onChange(event.target.value);
-  }
+  };
 
   return (
     <Box flexDirection='column' marginTop={1} marginBottom={1} width='100%'>
       <Label>{label}</Label>
       <StyledInput {...props} onChange={handleChange} />
     </Box>
-  )
-}
+  );
+};
 
 export default Input;
