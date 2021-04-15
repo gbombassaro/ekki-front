@@ -13,8 +13,9 @@ const SelectUser = ({dispatch, usersList}) => {
 
   const dispatchSelectedUser = id => {
     const selectedUser = usersList[id];
-    dispatch({type: 'USER/SET_AUTH_USER', data: selectedUser});
     localStorage.setItem('authenticatedUser', selectedUser._id);
+    dispatch({type: 'USER/SET_AUTH_USER', data: selectedUser});
+    dispatch({type: 'NOTIFICATION/SHOW', message: `Usuário ${selectedUser.name} autenticado`});
   };
 
   return (
