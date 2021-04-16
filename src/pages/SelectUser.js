@@ -1,5 +1,5 @@
 import {map, orderBy} from 'lodash';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -9,7 +9,11 @@ import Box from '../components/box';
 import {parseBalance} from '../utils';
 import Button from '../components/button';
 
-const SelectUser = ({dispatch, usersList}) => {
+const SelectUser = ({dispatch, loadUsers,  usersList}) => {
+
+  useEffect(() => {
+    loadUsers(dispatch);
+  }, [])
 
   const orderedUsersList = orderBy(usersList, 'createdAt', 'desc');
 

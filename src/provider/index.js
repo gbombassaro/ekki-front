@@ -21,7 +21,6 @@ const StateProvider = ({children}) => {
   const providerState = {...state, dispatch, loadUsers, updateData};
 
   useEffect(() => {
-    loadUsers(dispatch);
     return () => localStorage.removeItem('authenticatedUser');
   }, []);
   
