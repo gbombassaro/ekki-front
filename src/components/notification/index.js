@@ -1,26 +1,32 @@
 import {debounce} from 'lodash';
 import React from 'react';
 import styled from 'styled-components';
+import Box from '../box';
+import PropTypes from 'prop-types';
 
 import closeIcon from '../../assets/close.svg';
 
-const Body = styled.div`
+const AbsoluteContainer = styled.div`
   position: absolute;
-  left: calc(50vw - 225px - 48px);
-  bottom: 24px;
-  width: 450px;
-  height: calc(150px - 48px);
-  padding: 24px;
+  bottom: 0px;
   background-color: black;
-  svg {
-    cursor: pointer;
-    fill: white;
+  color: white;
+  @media (min-width: 600px) {
+    bottom: 24px;
+    left: calc(50vw - 225px - 48px);
   }
 `;
+
 const Message = styled.p`
   font-size: 16px;
   color: white;
 `;
+
+const Image = styled.img`
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+`
 
 const Notification = ({data, dispatch}) => {
   const {show, message} = data;
@@ -34,11 +40,20 @@ const Notification = ({data, dispatch}) => {
   autoCloseNotification();
 
   return (
-    <Body>
-      <img src={closeIcon} onClick={close} />
-      <Message>{message}</Message>
-    </Body>
+    <AbsoluteContainer>
+      <Box flexDirection='column' padding='24px' width={['calc(100vw - 48px)', '450px']} height='calc(150px - 48px)'>
+        <Box justifyContent='flex-end'>
+          <Image src={closeIcon} onClick={close} />
+        </Box>
+        <Message>{message}</Message>
+      </Box>
+    </AbsoluteContainer>
   );
+};
+
+Notification.propTypes = {
+  data: PropTypes.object,
+  dispatch: PropTypes.func
 };
 
 export default Notification;
