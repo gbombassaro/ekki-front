@@ -5,25 +5,23 @@ import {parseName, parseBalance} from '../../utils';
 import Box from '../box';
 import Button from '../button';
 import {Grid, Item} from '../grid';
-
+import {SmallTitle} from '../typography';
 
 const Panel = ({userData}) => {
 
   const {name, balance, credit, creditLimit} = userData;
 
-  const boxWidth = ['calc(100% - 50px)', 'calc(100% - 66px)'];
-  const boxPadding = ['24px', '32px'];
-
+  const boxStyledProps = {
+    width: ['calc(100% - 50px)', 'calc(100% - 66px)'],
+    padding: ['24px', '32px'],
+    border: '1px solid',
+    borderColor: 'secondary',
+    flexDirection: 'column',
+  }
+  
   const Welcome = () => (
-    <Box
-      width={boxWidth}
-      height='calc(75vh - 66px)'
-      padding={boxPadding}
-      border='1px solid'
-      borderColor='secondary'
-      flexDirection='column'
-    >
-      <p>Seja bem vindo, {parseName(name)}</p>
+    <Box {...boxStyledProps} height='calc(75vh - 66px)'>
+      <SmallTitle fontSize={['32px', '40px']}>Seja bem vindo, {parseName(name)}</SmallTitle>
       <Link to='/'>
         <Button>Voltar</Button>
       </Link>
@@ -31,27 +29,18 @@ const Panel = ({userData}) => {
   );
 
   const BalanceInformation = () => (
-    <Box
-      width={boxWidth}
-      height='calc(37.5vh - 66px)'
-      padding={boxPadding}
-      border='1px solid'
-      borderColor='secondary'
-    >
+    <Box {...boxStyledProps} height='calc(37.5vh - 66px)'>
+      <SmallTitle>Saldo disponível</SmallTitle>
       {parseBalance(balance)}
     </Box>
   );
 
   const CreditInformation = () => (
-    <Box
-      width={boxWidth}
-      height='calc(37.5vh - 66px)'
-      padding={boxPadding}
-      border='1px solid'
-      borderColor='secondary'
-    >
-      Seu limite é de {parseBalance(creditLimit)}
-      você utilizou {parseBalance(credit)}
+    <Box {...boxStyledProps} height='calc(37.5vh - 66px)'>
+      <SmallTitle>Seu limite é de</SmallTitle>
+      {parseBalance(creditLimit)}
+      <SmallTitle>você utilizou</SmallTitle>
+      {parseBalance(credit)}
     </Box>
   );
 

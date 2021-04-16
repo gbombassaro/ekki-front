@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import arrowForwardIcon from '../../assets/arrow-forward.svg';
 import Box from '../box';
+import {Text} from '../typography';
 
 const Container = styled(Box)`
   &:hover {
@@ -34,9 +35,9 @@ const User = ({altId, primaryInformation, secondaryInformation, onClick}) => {
       borderColor='secondary'
       onClick={handleClick}
     >
-      <p>{primaryInformation}</p>
+      <Text>{primaryInformation}</Text>
       <Box alignItems='center'>
-        {secondaryInformation && <p>{secondaryInformation}</p>}
+        {secondaryInformation && <Text>{secondaryInformation}</Text>}
         <img src={arrowForwardIcon} />
       </Box> 
     </Container>

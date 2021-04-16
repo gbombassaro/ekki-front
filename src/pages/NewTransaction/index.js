@@ -8,6 +8,7 @@ import UserList from '../../components/userList';
 import {toNumber} from '../../utils';
 import {newTransaction} from './actions';
 import Balance from './balance';
+import {Text} from '../../components/typography'
 
 const NewTransaction = ({userData, dispatch, updateData}) => {
   const {_id, balance, favoredList} = userData;
@@ -76,7 +77,7 @@ const NewTransaction = ({userData, dispatch, updateData}) => {
         <Section padding='32px' justifyContent={['flex-start', 'center']}>
           {emptyBeneficiaries ? (
             <Box>
-              <p>Ops! Parece que você ainda não cadastrou favorecidos.</p>
+              <Text>Ops! Parece que você ainda não cadastrou favorecidos.</Text>
             </Box>
           ) : (
             <UserList

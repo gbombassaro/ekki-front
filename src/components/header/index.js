@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import Box from '../box';
 import Button from '../button';
 import Section from '../section';
+import {ExclusiveTitle} from '../typography';
 
 const Header = ({actionButtons, isHome, title}) => {
 
@@ -21,7 +22,7 @@ const Header = ({actionButtons, isHome, title}) => {
       padding='32px'
     >
       <Box height='max-content'>
-        <h1>{title}</h1>
+        <ExclusiveTitle fontSize={['30px', '50px']}>{title}</ExclusiveTitle>
       </Box>
       <Box flexDirection='column' alignItems={['flex-start', 'flex-end']}>
         {map(actionButtons, button => (

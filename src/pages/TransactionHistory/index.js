@@ -5,6 +5,7 @@ import Box from '../../components/box';
 import Header from '../../components/header';
 import Section from '../../components/section';
 import Transaction from './transaction';
+import {Text} from '../../components/typography'
 
 const TransactionHistory = ({userData}) => {
 
@@ -26,7 +27,7 @@ const TransactionHistory = ({userData}) => {
       <Section justifyContent='center'>
         <Box width='100%' maxWidth={600} flexDirection='column' alignItems={isEmpty ? 'center' : 'flex-start'}>
           {isEmpty ? (
-            <p>Ops! Parece que você ainda não fez uma transação.</p>
+            <Text>Ops! Parece que você ainda não fez uma transação.</Text>
           ) : (
             map(orderedTransactions, transaction => <Transaction key={transaction.id} data={transaction} />)
           )}

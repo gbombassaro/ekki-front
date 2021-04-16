@@ -5,6 +5,7 @@ import Box from '../box';
 import PropTypes from 'prop-types';
 
 import closeIcon from '../../assets/close.svg';
+import {Text} from '../typography';
 
 const AbsoluteContainer = styled.div`
   position: absolute;
@@ -15,11 +16,6 @@ const AbsoluteContainer = styled.div`
     bottom: 24px;
     left: calc(50vw - 225px - 48px);
   }
-`;
-
-const Message = styled.p`
-  font-size: 16px;
-  color: white;
 `;
 
 const Image = styled.img`
@@ -36,7 +32,7 @@ const Notification = ({data, dispatch}) => {
     dispatch({type: 'NOTIFICATION/CLOSE'});
   };
 
-  const autoCloseNotification = debounce(close, 4000);
+  const autoCloseNotification = debounce(close, 5000);
   autoCloseNotification();
 
   return (
@@ -45,7 +41,7 @@ const Notification = ({data, dispatch}) => {
         <Box justifyContent='flex-end'>
           <Image src={closeIcon} onClick={close} />
         </Box>
-        <Message>{message}</Message>
+        <Text color='white'>{message}</Text>
       </Box>
     </AbsoluteContainer>
   );

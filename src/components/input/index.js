@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Box from '../box';
+import {Label} from '../typography';
 
 const StyledInput = styled.input`
   width: calc(100% - 26px);
@@ -12,14 +13,11 @@ const StyledInput = styled.input`
   color: ${props => props.theme.colors.secondary};
   border-color: ${props => props.theme.colors.secondary};
   border-radius: 0px;
+  border-style: solid;
   &:focus {
     outline: unset;
+    box-shadow: 0 0 0 1px ${props => props.theme.colors.secondary};
   }
-`;
-const Label = styled.label`
-  font-size: 16px;
-  margin-bottom: 8px;
-  color: ${props => props.theme.colors.secondary};
 `;
 
 const Input = props => {

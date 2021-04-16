@@ -7,6 +7,8 @@ import Box from '../box';
 import Button from '../button';
 import Input from '../input';
 
+import {MediumTitle, Text} from '../typography';
+
 const Form = props => {
 
   const {
@@ -23,7 +25,7 @@ const Form = props => {
 
   if (successData.message) return (
     <Box width='100%' flexDirection='column' alignItems='center'>
-      <p>{successData.message}</p>
+      <Text>{successData.message}</Text>
       <Link to={successData.path}>
         <Button hasIcon>{successData.buttonMessage}</Button>
       </Link>
@@ -32,7 +34,7 @@ const Form = props => {
 
   return (
     <Box width='100%' flexDirection='column' maxWidth={600}>
-      <h3>{title}</h3>
+      <MediumTitle>{title}</MediumTitle>
       <Box width='100%' flexDirection='column'>
         {map(data, entry => (
           <Input key={entry.id} {...entry} value={entry.value} onChange={entry.onChange} />

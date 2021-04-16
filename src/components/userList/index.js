@@ -4,6 +4,7 @@ import React from 'react';
 
 import Box from '../box';
 import User from '../user';
+import {MediumTitle} from '../typography'
 
 const UserList = props => {
 
@@ -17,7 +18,7 @@ const UserList = props => {
 
   return (
     <Box width='100%' flexDirection='column' maxWidth={600}>
-      <h3>{title}</h3>
+      <MediumTitle>{title}</MediumTitle>
       <Box width='100%'>
         {map(data, entry => (
           <User

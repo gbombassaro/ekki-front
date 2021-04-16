@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import arrowForwardIcon from '../../assets/arrow-forward.svg';
+import {ButtonTypo} from '../typography'
 
 const Button = styled.button`
   width: max-content;
@@ -35,10 +36,11 @@ const Button = styled.button`
     margin-left: 12px;
   }
 `;
+
 const Component = props => {
   return (
     <Button {...props}>
-      {props.children}
+      <ButtonTypo>{props.children}</ButtonTypo>
       {props.hasIcon && <img src={arrowForwardIcon} className='forward-icon'/>}
     </Button>
   );
