@@ -59,6 +59,7 @@ O app está conectado por um theme que é propagado para a API do styled-compone
 ```<StyledComponent color="secondary" />```
 
 <pre>
+  //theme.js
   {
     colors: {
       primary: 'green',
