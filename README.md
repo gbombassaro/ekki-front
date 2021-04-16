@@ -74,7 +74,7 @@ O app está conectado por um theme que é propagado para a API do styled-compone
 O design responsivo fica em grande parte por conta do styled-system e é aplicado da seguinte forma:
 ```<StyledComponent fontSize={['16px', '18px']}/>```
 
-A prop desejada deve receber um array. As posições correspondem ao tamanho de breakpoint definido no theme. Os valores corresponde ao valor CSS que será aplicado na querie correspondente a posição.
+A prop desejada deve receber um array. As posições deste array correspondem aos tamanhos de breakpoint definidos no array `breakpoints: []` em theme.js. O valor é o que será aplicado ao CSS na querie correspondente a posição escolhida.
 
 <br/>
 <br/>
