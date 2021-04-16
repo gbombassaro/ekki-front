@@ -35,7 +35,7 @@ Foi utilizada a React context API para distribuir um contexto de dados no projet
   > NOTIFICATION/SHOW
 
   > NOTIFICATION/CLOSE
-  
+
   > USER/SET_AUTH_USER
 
 - loadUsers()
@@ -49,22 +49,40 @@ O app está divido em base-components e pages. Base-components são peças gené
 
 ### Base-components
 >Box
+
 >Section
+
 >Typography
+
 >Button
+
 >Input
+
 >Form
+
 >User
+
 >UserList
+
 >UnauthorizedUser
+
 >Notification
+
 >Header
+
 >Grid
+
 
 ### Pages
 >SelectUser
+
 >Home
+
 >Favored (favorecido)
+
 >NewTransaction
+
 >NewUser
+
 >TransactionHistory
+
