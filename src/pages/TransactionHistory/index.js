@@ -1,4 +1,4 @@
-import {map} from 'lodash';
+import {map, orderBy} from 'lodash';
 import React from 'react';
 
 import Box from '../../components/box';
@@ -9,7 +9,8 @@ import Transaction from './transaction';
 const TransactionHistory = ({userData}) => {
 
   const {transactionHistory} = userData;
-  const isEmpty = transactionHistory.length < 1;
+  const orderedTransactions = orderBy(transactionHistory, 'processedAt', 'desc');
+  const isEmpty = orderedTransactions.length < 1;
 
   const headerActionButtons = [
     {
@@ -27,7 +28,7 @@ const TransactionHistory = ({userData}) => {
           {isEmpty ? (
             <p>Ops! Parece que você ainda não fez uma transação.</p>
           ) : (
-            map(transactionHistory.reverse(), transaction => <Transaction key={transaction.id} data={transaction} />)
+            map(orderedTransactions, transaction => <Transaction key={transaction.id} data={transaction} />)
           )}
         </Box>
       </Section>
