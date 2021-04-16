@@ -29,9 +29,13 @@ Foi utilizada a React context API para distribuir um contexto de dados no projet
 - dispatch()
   Dispara ações do estado global, realizando alterações e atualizando os componentes.
   > DATA/LOAD
+
   > DATA/UPDATE
+
   > NOTIFICATION/SHOW
+
   > NOTIFICATION/CLOSE
+  
   > USER/SET_AUTH_USER
 
 - loadUsers()
