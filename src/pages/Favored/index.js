@@ -5,7 +5,7 @@ import Header from '../../components/header';
 import Section from '../../components/section';
 import {newFavorite} from './actions';
 
-const NewFavorite = ({dispatch, updateData}) => {
+const NewFavorite = ({userData, dispatch, updateData}) => {
 
   const [name, setName] = useState('');
   const [cpf, setCpf] = useState('');
@@ -14,12 +14,17 @@ const NewFavorite = ({dispatch, updateData}) => {
   const [formStatus, setFormStatus] = useState({});
 
   useEffect(() => {
-    if (!name || !cpf || cpf.length < 11 || !phone || phone.length < 11) setValidation(false);
+    if (!name || !cpf || cpf.length < 11 || phone && phone.length < 11) setValidation(false);
     else setValidation(true);
   }, [name, cpf, phone]);
 
   const handleClick = () => {
-    newFavorite({name, cpf, phone})
+    newFavorite({
+      originId: userData._id,
+      name,
+      cpf,
+      phone
+    })
       .then(() => {
         setFormStatus({
           message: 'Favorecido cadastrado com sucesso.',

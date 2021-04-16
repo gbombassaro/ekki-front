@@ -10,8 +10,8 @@ import {newTransaction} from './actions';
 import Balance from './balance';
 
 const NewTransaction = ({userData, dispatch, updateData}) => {
-  const {_id, balance, beneficiaryList} = userData;
-  const emptyBeneficiaries = beneficiaryList.length < 1;
+  const {_id, balance, favoredList} = userData;
+  const emptyBeneficiaries = favoredList.length < 1;
   const [page, setPage] = useState(0);
   const [transactionDestiny, setTransactionDestiny] = useState({});
   const [transactionValue, setTransactionValue] = useState(0);
@@ -81,7 +81,7 @@ const NewTransaction = ({userData, dispatch, updateData}) => {
           ) : (
             <UserList
               title='Para quem será a transferência?'
-              data={beneficiaryList}
+              data={favoredList}
               onClick={handleDestinySelection}
               primaryInformation='name'
               secondaryInformation='cpf'

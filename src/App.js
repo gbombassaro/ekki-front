@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 
 import UnauthorizedUser from './components/unauthorizedUser';
-import {SelectUser, Home, Beneficiaries, NewTransaction, TransactionHistory, NewUser} from './pages';
+import {SelectUser, Home, FavoredUsers, NewTransaction, TransactionHistory, NewUser} from './pages';
 import {UserContext} from './provider';
 
 const App = () => {
@@ -28,7 +28,7 @@ const App = () => {
       <RouteWithContext exact path="/" component={SelectUser} />
       <RouteWithContext path="/novo-usuario" component={NewUser} />
       <RouteWithContext path="/home" component={Home} />
-      <RouteWithContext path="/favorecidos" component={Beneficiaries} />
+      <RouteWithContext path="/favorecidos" component={FavoredUsers} />
       <RouteWithContext path="/transferir" component={NewTransaction} />
       <RouteWithContext path="/historico-de-transacoes" component={TransactionHistory} />
       <Route path="*">
