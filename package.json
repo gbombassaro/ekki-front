@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",
+    "d3": "^6.7.0",
     "date-fns": "^2.20.3",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",

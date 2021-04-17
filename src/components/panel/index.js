@@ -6,6 +6,7 @@ import Box from '../box';
 import Button from '../button';
 import {Grid, Item} from '../grid';
 import {SmallTitle} from '../typography';
+import CreditVisualization from './creditVisualization';
 
 const Panel = ({userData}) => {
 
@@ -41,6 +42,7 @@ const Panel = ({userData}) => {
       {parseBalance(creditLimit)}
       <SmallTitle>você utilizou</SmallTitle>
       {parseBalance(credit)}
+      <CreditVisualization userData={userData} />
     </Box>
   );
 
