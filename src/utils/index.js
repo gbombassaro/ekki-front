@@ -6,8 +6,8 @@ export const numberFormat = (number = 0, options = {minimumFractionDigits: 2, ma
 };
 
 export const percentage = (value, options = {minimumFractionDigits: 0, maximumFractionDigits: 0}) => {
-  return `${numberFormat(value, options)}%`
-}
+  return `${numberFormat(value, options)}%`;
+};
 
 export const parseName = name => {
   const parsed = name.split(' ');
