@@ -40,7 +40,7 @@ const Panel = ({userData}) => {
     <Box {...boxStyledProps} height='calc(37.5vh - 66px)'>
       <Box justifyContent='space-between' marginBottom={4}>
         <Box flexDirection='column' alignItems='flex-start'>
-          <SmallTitle>você utilizou</SmallTitle>
+          <SmallTitle>Você utilizou</SmallTitle>
           {parseBalance(credit)}
         </Box>
         <Box flexDirection='column' alignItems='flex-end'>
