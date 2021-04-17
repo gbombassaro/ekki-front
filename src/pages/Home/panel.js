@@ -1,11 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import {parseName, parseBalance} from '../../utils';
 import Box from '../../components/box';
 import Button from '../../components/button';
 import {Grid, Item} from '../../components/grid';
 import {SmallTitle} from '../../components/typography';
+import {parseName, parseBalance} from '../../utils';
 import CreditVisualization from './creditVisualization';
 
 const Panel = ({userData}) => {
@@ -18,7 +18,7 @@ const Panel = ({userData}) => {
     border: '1px solid',
     borderColor: 'secondary',
     flexDirection: 'column',
-  }
+  };
   
   const Welcome = () => (
     <Box {...boxStyledProps} height='calc(75vh - 66px)'>

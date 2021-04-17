@@ -4,8 +4,8 @@ import React from 'react';
 import Box from '../../components/box';
 import Header from '../../components/header';
 import Section from '../../components/section';
+import {Text} from '../../components/typography';
 import Transaction from './transaction';
-import {Text} from '../../components/typography'
 
 const TransactionHistory = ({userData}) => {
 

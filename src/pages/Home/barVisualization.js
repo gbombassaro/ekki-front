@@ -1,13 +1,14 @@
-import React from 'react'
-import * as d3 from 'd3'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import {ChartText as Text} from '../../components/typography'
+import * as d3 from 'd3';
+import PropTypes from 'prop-types';
+import React from 'react';
+import styled from 'styled-components';
+
+import {ChartText as Text} from '../../components/typography';
 
 const Rectangle = styled.rect`
   fill: ${props => props.theme.colors[props.fill]};
   stroke: ${props => props.theme.colors[props.stroke]};
-`
+`;
 
 const BarDataVisualization = ({width, userData}) => {
 
@@ -27,7 +28,7 @@ const BarDataVisualization = ({width, userData}) => {
   const xScale = d3.scaleLinear().range(xScaleRange).domain(xScaleDomain);
 
   const usedCreditShare = credit * 100 / creditLimit;
-  const usedCredit = xScale(usedCreditShare)
+  const usedCredit = xScale(usedCreditShare);
   
   return (
     <svg width={width} height={barHeight}>
@@ -35,12 +36,12 @@ const BarDataVisualization = ({width, userData}) => {
       <Rectangle fill='secondary' stroke='secondary' x='1' y='1' width={usedCredit} height={progressBar} />
       <Text x={activeWidth + textMargin} y={halfBarHeight} dominantBaseline='middle'>{usedCreditShare}%</Text>
     </svg>
-  )
-}
+  );
+};
 
 BarDataVisualization.propTypes = {
   width: PropTypes.number, 
   userData: PropTypes.object,
-}
+};
 
 export default BarDataVisualization;

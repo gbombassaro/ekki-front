@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom';
 import Box from '../box';
 import Button from '../button';
 import Input from '../input';
-
 import {MediumTitle, Text} from '../typography';
 
 const Form = props => {

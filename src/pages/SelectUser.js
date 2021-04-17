@@ -1,19 +1,19 @@
 import {map, orderBy} from 'lodash';
+import PropTypes from 'prop-types';
 import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
 
+import Box from '../components/box';
+import Button from '../components/button';
 import Section from '../components/section';
 import User from '../components/user';
-import Box from '../components/box';
 import {parseBalance} from '../utils';
-import Button from '../components/button';
 
 const SelectUser = ({dispatch, loadUsers,  usersList}) => {
 
   useEffect(() => {
     loadUsers(dispatch);
-  }, [])
+  }, []);
 
   const orderedUsersList = orderBy(usersList, 'createdAt', 'desc');
 
@@ -57,6 +57,6 @@ const SelectUser = ({dispatch, loadUsers,  usersList}) => {
 SelectUser.propTypes = {
   dispatch: PropTypes.func,
   usersList: PropTypes.array
-}
+};
 
 export default SelectUser;
