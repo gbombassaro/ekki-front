@@ -5,6 +5,10 @@ export const numberFormat = (number = 0, options = {minimumFractionDigits: 2, ma
   return new Intl.NumberFormat('pt-br', options).format(number);
 };
 
+export const percentage = (value, options = {minimumFractionDigits: 0, maximumFractionDigits: 0}) => {
+  return `${numberFormat(value, options)}%`
+}
+
 export const parseName = name => {
   const parsed = name.split(' ');
   return parsed[0];

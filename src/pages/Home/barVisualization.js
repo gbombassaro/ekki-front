@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import {ChartText as Text} from '../../components/typography';
+import {percentage} from '../../utils';
 
 const Rectangle = styled.rect`
   fill: ${props => props.theme.colors[props.fill]};
@@ -34,7 +35,7 @@ const BarDataVisualization = ({width, userData}) => {
     <svg width={width} height={barHeight}>
       <Rectangle fill='white' stroke='secondary' strokeWidth={strokeWidth} width={activeWidth} height={barHeight} />
       <Rectangle fill='secondary' stroke='secondary' x='1' y='1' width={value} height={progressBar} />
-      <Text x={activeWidth + textMargin} y={halfBarHeight} dominantBaseline='middle'>{shareValue}%</Text>
+      <Text x={activeWidth + textMargin} y={halfBarHeight} dominantBaseline='middle'>{percentage(shareValue)}</Text>
     </svg>
   );
 };
