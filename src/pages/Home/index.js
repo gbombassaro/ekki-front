@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Header from '../components/header';
-import Panel from '../components/panel';
+import Header from '../../components/header';
+import Panel from './panel';
 
 const Home = props => {
 

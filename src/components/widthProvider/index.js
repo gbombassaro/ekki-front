@@ -34,10 +34,7 @@ const WidthProvider = props => {
 };
 
 WidthProvider.propTypes = {
-  children: PropTypes.any.isRequired,
-  initialWidth: PropTypes.number.isRequired,
-  referenceStyle: PropTypes.string,
-  smallSize: PropTypes.number
+  children: PropTypes.node.isRequired,
 };
 
 export default WidthProvider;

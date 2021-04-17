@@ -1,12 +1,12 @@
 import React from 'react';
-import WidthProvider from '../widthProvider';
+import WidthProvider from '../../components/widthProvider';
 import BarVisualization from './barVisualization';
 import PropTypes from 'prop-types';
 
 const CreditVisualization = ({userData}) => {
   return (
     <WidthProvider>
-      <BarVisualization userData={userData} height={100} />
+      <BarVisualization userData={userData} />
     </WidthProvider>
   )
 }

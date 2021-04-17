@@ -39,3 +39,7 @@ export const Text = styled.p`
   color: ${getColor};
   ${typography};
 `
+export const ChartText = styled.text`
+  color: ${getColor};
+  ${typography};
+`

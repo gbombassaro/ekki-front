@@ -2,10 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import {parseName, parseBalance} from '../../utils';
-import Box from '../box';
-import Button from '../button';
-import {Grid, Item} from '../grid';
-import {SmallTitle} from '../typography';
+import Box from '../../components/box';
+import Button from '../../components/button';
+import {Grid, Item} from '../../components/grid';
+import {SmallTitle} from '../../components/typography';
 import CreditVisualization from './creditVisualization';
 
 const Panel = ({userData}) => {
@@ -38,10 +38,16 @@ const Panel = ({userData}) => {
 
   const CreditInformation = () => (
     <Box {...boxStyledProps} height='calc(37.5vh - 66px)'>
-      <SmallTitle>Seu limite é de</SmallTitle>
-      {parseBalance(creditLimit)}
-      <SmallTitle>você utilizou</SmallTitle>
-      {parseBalance(credit)}
+      <Box justifyContent='space-between' marginBottom={4}>
+        <Box flexDirection='column' alignItems='flex-start'>
+          <SmallTitle>você utilizou</SmallTitle>
+          {parseBalance(credit)}
+        </Box>
+        <Box flexDirection='column' alignItems='flex-end'>
+          <SmallTitle>Seu limite é de</SmallTitle>
+          {parseBalance(creditLimit)}
+        </Box>
+      </Box>
       <CreditVisualization userData={userData} />
     </Box>
   );
