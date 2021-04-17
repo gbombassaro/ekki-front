@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Box from '../../components/box';
+import {Text} from '../../components/typography';
 import {parseBalance} from '../../utils';
-import {Text} from '../../components/typography'
 
 const Balance = ({balance, transactionValue}) => {
   let finalValue = balance - transactionValue;

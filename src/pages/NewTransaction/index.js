@@ -4,11 +4,11 @@ import Box from '../../components/box';
 import TransactionForm from '../../components/form';
 import Header from '../../components/header';
 import Section from '../../components/section';
+import {Text} from '../../components/typography';
 import UserList from '../../components/userList';
 import {toNumber} from '../../utils';
 import {newTransaction} from './actions';
 import Balance from './balance';
-import {Text} from '../../components/typography'
 
 const NewTransaction = ({userData, dispatch, updateData}) => {
   const {_id, balance, favoredList} = userData;

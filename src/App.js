@@ -10,7 +10,7 @@ const App = () => {
   const checkAuthentication = ({userData}, currentPath) => {
     if (!userData._id && currentPath !== '/' && currentPath !== '/novo-usuario') return false;
     return true;
-  }
+  };
 
   const RouteWithContext = ({path, exact = false, component}) => {
     const Component = component;

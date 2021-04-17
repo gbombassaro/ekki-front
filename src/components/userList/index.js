@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Box from '../box';
+import {MediumTitle} from '../typography';
 import User from '../user';
-import {MediumTitle} from '../typography'
 
 const UserList = props => {
 

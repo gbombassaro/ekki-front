@@ -1,10 +1,10 @@
 import {debounce} from 'lodash';
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import Box from '../box';
-import PropTypes from 'prop-types';
 
 import closeIcon from '../../assets/close.svg';
+import Box from '../box';
 import {Text} from '../typography';
 
 const AbsoluteContainer = styled.div`
@@ -22,7 +22,7 @@ const Image = styled.img`
   width: 24px;
   height: 24px;
   cursor: pointer;
-`
+`;
 
 const Notification = ({data, dispatch}) => {
   const {show, message} = data;
