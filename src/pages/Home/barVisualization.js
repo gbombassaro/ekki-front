@@ -18,8 +18,8 @@ const BarDataVisualization = ({width, userData}) => {
   const marginRight = 40;
   const textMargin = 4;
   const strokeWidth = 2;
-  const activeWidth = width - marginRight;
   const barHeight = 20;
+  const activeWidth = width - marginRight;
   const progressBar = 20 - strokeWidth;
   const halfBarHeight = 20 / 2 + strokeWidth;
 
@@ -27,14 +27,14 @@ const BarDataVisualization = ({width, userData}) => {
   const xScaleDomain = [0, 100];
   const xScale = d3.scaleLinear().range(xScaleRange).domain(xScaleDomain);
 
-  const usedCreditShare = credit * 100 / creditLimit;
-  const usedCredit = xScale(usedCreditShare);
+  const shareValue = credit * 100 / creditLimit;
+  const value = xScale(shareValue);
   
   return (
     <svg width={width} height={barHeight}>
       <Rectangle fill='white' stroke='secondary' strokeWidth={strokeWidth} width={activeWidth} height={barHeight} />
-      <Rectangle fill='secondary' stroke='secondary' x='1' y='1' width={usedCredit} height={progressBar} />
-      <Text x={activeWidth + textMargin} y={halfBarHeight} dominantBaseline='middle'>{usedCreditShare}%</Text>
+      <Rectangle fill='secondary' stroke='secondary' x='1' y='1' width={value} height={progressBar} />
+      <Text x={activeWidth + textMargin} y={halfBarHeight} dominantBaseline='middle'>{shareValue}%</Text>
     </svg>
   );
 };
