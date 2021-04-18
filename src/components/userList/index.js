@@ -19,7 +19,7 @@ const UserList = props => {
   return (
     <Box width='100%' flexDirection='column' maxWidth={600}>
       <MediumTitle>{title}</MediumTitle>
-      <Box width='100%'>
+      <Box width='100%' flexDirection='column'>
         {map(data, entry => (
           <User
             key={entry.id}

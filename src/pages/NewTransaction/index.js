@@ -11,7 +11,7 @@ import {newTransaction} from './actions';
 import Balance from './balance';
 
 const NewTransaction = ({userData, dispatch, updateData}) => {
-  const {_id, balance, favoredList} = userData;
+  const {_id, favoredList} = userData;
   const emptyBeneficiaries = favoredList.length < 1;
   const [page, setPage] = useState(0);
   const [transactionDestiny, setTransactionDestiny] = useState({});
@@ -93,12 +93,7 @@ const NewTransaction = ({userData, dispatch, updateData}) => {
       {page === 1 &&
         <Section padding='32px' justifyContent='center'>
           <Box width='100%' maxWidth={600} flexDirection='column'>
-            {showBalance && (
-              <Balance
-                balance={balance}
-                transactionValue={transactionValue}
-              />
-            )}
+            {showBalance && <Balance userData={userData} transactionValue={transactionValue} />}
             <TransactionForm
               title='Qual o valor?'
               data={transactionFormData}
