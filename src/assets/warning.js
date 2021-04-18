@@ -1,10 +1,10 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled, {withTheme} from 'styled-components';
-import PropTypes from 'prop-types';
 
 const Svg = styled.svg`
   fill: ${props => props.theme.colors[props.color]};
-`
+`;
 
 const Warning = ({color, height, viewBox, width}) => (
   <Svg

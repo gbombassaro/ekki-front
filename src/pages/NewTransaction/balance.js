@@ -1,10 +1,10 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import Box from '../../components/box';
 import {Text} from '../../components/typography';
-import {parseBalance} from '../../utils';
 import Warning from '../../components/warningMessage';
-import PropTypes from 'prop-types';
+import {parseBalance} from '../../utils';
 
 const getAmountAvailable = (balance, availableCredit) => {
   if (balance < 0) return availableCredit;
@@ -19,7 +19,7 @@ const Balance = ({userData, transactionValue}) => {
   let warningMessage = '';
 
   if (!transactionValue) finalValue = balance;
-  if (finalValue < 0) warningMessage = 'Atenção! Você está usando seu limite de crédito.'
+  if (finalValue < 0) warningMessage = 'Atenção! Você está usando seu limite de crédito.';
 
   return (
     <Box width='100%' flexDirection='column' marginTop={2} marginBottom={2}>
