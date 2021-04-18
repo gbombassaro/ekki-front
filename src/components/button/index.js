@@ -31,6 +31,7 @@ const Button = styled.button`
   &:disabled {
     box-shadow: unset;
     border-color: rgba(16, 16, 16, 0.3);
+    cursor: initial;
   }
   .forward-icon {
     margin-left: 12px;
